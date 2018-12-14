@@ -1,0 +1,5 @@
+<view class='container align-c'>
+  <image src='../../asset/img/success.png' class='success-img'></image>
+  <view class='success'>预约成功</view>
+  <text class='fs66'>请保持电话畅通，我们会按时携带您挑选的家政人员赴约面试</text>
+</view>

@@ -1,0 +1,77 @@
+<view class='container'>
+  <view class='tabs-header bordbd9'>
+    <text class='tabs-item {{currentTab==index ? "active" : ""}}' wx:for="{{tabsArr}}" bindtap='tabHandle' wx:key='index' data-idx="{{index}}">{{item}}</text>
+  </view>
+  <view class='tabs-content' hidden='{{currentTab!=0}}'>
+    <view class='align-c fs99 gap-350' wx:if="{{orderWaiting&&orderWaiting.length==0}}">暂无数据</view>
+    <view class='order-item bordbd9' wx:for="{{orderWaiting}}" wx:key='index'>
+      <text class='iconfont icon-dingdan fsc3'></text>
+      <view class='fs66 order-content'>
+        <view class='row align-r'>
+          <text class='f-left'>家政人员</text>{{item.name}}</view>
+        <view class='row align-r'>
+          <text class='f-left'>合同开始时间</text>{{item.starttime}}元</view>
+        <view class='row align-r'>
+          <text class='f-left'>合同结束时间</text>{{item.endtime}}元</view>
+        <view class='row align-r'>
+          <text class='f-left'>平台管理费</text>{{item.managefee}}元</view>
+        <view class='btn-wrapper align-c gap-40'>
+          <button size='mini' class='btn-primary bgc3' bindtap='gopay' data-osid='{{item.osid}}' data-money='{{item.managefee}}' data-billid='{{item.billid}}'>去支付</button>
+        </view>
+      </view>
+    </view>
+
+  </view>
+  <view class='tabs-content' hidden='{{currentTab!=1}}'>
+    <view class='align-c fs99 gap-350' wx:if="{{orderFinished&&orderFinished.length==0}}">暂无数据</view>
+    <view class='order-item bordbd9' wx:for="{{orderFinished}}" wx:key='index'>
+      <text class='iconfont icon-dingdan fsc3'></text>
+      <view class='fs66 order-content'>
+        <view class='row align-r'>
+          <text class='f-left'>家政人员</text>{{item.name}}</view>
+        <view class='row align-r'>
+          <text class='f-left'>合同开始时间</text>{{item.starttime}}</view>
+        <view class='row align-r'>
+          <text class='f-left'>合同结束时间</text>{{item.endtime}}</view>
+        <view class='row align-r'>
+          <text class='f-left'>平台管理费</text>{{item.managefee}}元</view>
+      </view>
+    </view>
+  </view>
+  <view class='tabs-content' hidden='{{currentTab!=2}}'>
+    <view class='align-c fs99 gap-350' wx:if="{{employRecord&&employRecord.length==0}}">暂无数据</view>
+    <view class='record-item bordbd9' wx:for="{{employRecord}}" wx:key='index' bindtap='gojump' data-hkphone='{{item.hkphone}}' data-hkid='{{item.hkid}}'>
+      <view class='record-info'>
+        <image src='{{globalimgeurl}}{{item.hkheadimg}}' class='record-img'></image>
+        <view class='record-intro'>
+          <text class='record-name'>{{item.hkname}}</text>
+          <text class='record-name'>薪资: {{item.salary}} 元</text>
+          <!-- <text >工资：{{item.salary}}</text>
+          <text >平台费用：{{item.managefee}}</text> -->
+          <text class='fs99'>{{item.create_time}}</text>
+          <text class='sign-cycle fs99'>{{item.starttime}} 至 {{item.endtime}}</text>
+          <view hidden='true' class='btn-review bgc3' bindtap='reviewTap' data-hkid='{{item.hkid}}'>评 价</view>
+        </view>
+      </view>
+      <view class='fs66 review-record' wx:if="{{item.score||item.content}}" hidden='true' >
+        <text class='iconfont icon-star fsc3' wx:for="{{item.score}}" wx:key='index'></text>
+        <text class='review-time fs99'>{{item.commenttime}}</text>
+        <view class='review-content'>评价：{{item.content}}</view>
+      </view>
+    </view>
+  </view>
+</view>
+<view class='cover' hidden='{{flag}}'>
+  <view class='modal align-c'>
+    <form>
+      <text class='iconfont icon-star modal-star {{index<=currentIdx? "active":""}}' wx:for="{{stars}}" wx:key='index' bindtap="starTap" data-idx="{{index}}"></text>
+      <view class='txt-wrapper'>
+        <textarea bindblur="bindTextAreaBlur" class='txt' placeholder="请输入" />
+      </view>
+      <view class='align-c gap-40 clearfix'>
+        <button size='mini' class='btn-primary f-left cancel' bindtap='cancelTap'>取消</button>
+        <button size='mini' class='btn-primary f-right bgc3' bindtap='submit'>提交</button>
+      </view>
+    </form>
+  </view>
+</view>

@@ -1,0 +1,30 @@
+/* pages/knowledge/knowledge.wxss */
+.know{
+  padding: 30rpx 40rpx;
+  line-height: 2;
+  text-indent: 2em;
+  text-align: justify;
+}
+.know-btn{
+  padding: 30rpx 0;
+  text-indent: 0;
+}
+.know-btn .btn-primary{
+  padding: 0 84rpx!important;
+}
+image{
+  width: 100%!important;
+}
+video{
+  width: 100%!important;
+}
+.padding20{
+  padding: 20rpx;
+}
+.paddingT12{
+  padding:12rpx 0;
+}
+.lineheight8{
+  line-height: 1.8;
+  text-indent: 2em;
+}

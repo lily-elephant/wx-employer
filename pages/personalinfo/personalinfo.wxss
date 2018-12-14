@@ -1,0 +1,44 @@
+.info-base{
+  display: flex;
+  padding: 40rpx;
+}
+.info-avatar{
+  display: block;
+  flex: 0 0 100rpx;
+  height: 100rpx;
+  border: 4rpx solid #999;
+  border-radius: 50%;
+}
+.employer-name{
+  display: block;
+  margin: 34rpx 0 0 36rpx;
+}
+.info-data{
+  padding: 0 40rpx;
+}
+.info-title{
+  padding: 20rpx 0;
+  line-height: 48rpx;
+}
+.icon-editavatar{
+  margin-right: 20rpx;
+  display: inline-block;
+  vertical-align: top;
+  font-size: 48rpx;
+}
+.info-detail{
+  padding: 18rpx 36rpx 0;
+}
+.row{
+  padding: 18rpx 0;
+  line-height: 1;
+}
+.btn-wrapper{
+  padding: 120rpx 0 0;
+}
+.hasdata{
+  clear: both;
+  text-align: left;
+  line-height: 1.5;
+  padding: 6rpx 32rpx;
+}

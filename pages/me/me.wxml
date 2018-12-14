@@ -1,0 +1,38 @@
+<view class='me-top bgc3'>
+  <view class='avatar-wrapper' bindtap='changeAvatar'>
+    <image class='avatar' src='{{imgUrl}}'></image>
+  </view>
+  <view class='me-info' bindtap='goLogin'>
+    <text class='me-name'>{{name==null?"未填写":name}}</text>
+    <view class='me-tel'>
+      <text class='fsee'>{{phoneNum}}</text>
+      <view class='f-right' bindtap='goInfo'>个人信息 <text class='iconfont icon-arrow-right'></text></view>
+    </view>
+  </view>
+</view>
+<view class='me-list'>
+  <view class='row'>
+    <text class='iconfont row-l icon-orders fsc3'></text>
+    <view class='caption bordbd9' bindtap='goMyorder'>我的合同<text class='iconfont icon-arrow-right fs99 f-right'></text></view>
+  </view>
+  <view class='row'>
+    <text class='iconfont row-l icon-email fsc3'></text>
+    <view class='caption bordbd9' bindtap='goMyinfo'>我的消息<text class='iconfont icon-arrow-right fs99 f-right'></text></view>
+  </view>
+  <view class='row'>
+    <text class='iconfont row-l icon-feedback fsc3'></text>
+    <view class='caption bordbd9' bindtap='goFeedback'>意见反馈<text class='iconfont icon-arrow-right fs99 f-right'></text></view>
+  </view>
+  <view class='row'>
+    <text class='iconfont row-l icon-aboutus fsc3'></text>
+    <view class='caption bordbd9' bindtap='goAboutus'>关于我们<text class='iconfont icon-arrow-right fs99 f-right'></text></view>
+  </view>
+  <view class='row'>
+    <text class='iconfont row-l icon-password fsc3'></text>
+    <view class='caption bordbd9' bindtap='goChangepwd'>修改密码<text class='iconfont icon-arrow-right fs99 f-right'></text></view>
+  </view>
+  <view class='row' hidden='{{isShow}}'>
+    <text class='iconfont row-l icon-quit'></text>
+    <view class='caption' bindtap='logout'>退出登录</view>
+  </view>
+</view>

@@ -1,0 +1,150 @@
+<form class='infoForm fs66' bindsubmit="formSubmit" bindreset="formReset">
+<view class="section clearfix">
+    <view class="section__title">姓名</view>
+    <view class='inp-wrapper'><input placeholder='填写姓名' name="input" class='inputTxt' type='name' bindinput='listenernameInput' value='{{name=="null"?"请填写":name}}' /></view>
+  </view>
+  <view class="section clearfix">
+    <view class="section__title">身份证号</view>
+    <view class='inp-wrapper'><input placeholder='填写身份证号' name="input" class='inputTxt' type='idcard' bindinput='listeneriscardInput' value='{{idcard=="null"?"请填写":idcard}}' /></view>
+  </view>
+  <view class="section clearfix">
+    <view class="section__title" type="number">性别</view>
+    <picker bindchange="bindPickerChange" value="{{sexIndex}}" range="{{sexArray}}" class='pickerSex'>
+      <view class="picker">
+        {{sex=="null"?"请填写":sex}}
+      </view>
+      <text class='iconfont icon-arrow-down'></text>
+    </picker>
+  </view>
+  <view class="section clearfix">
+    <view class="section__title">所在地区</view>
+    <picker mode="region" value='{{region}}' bindchange='bindRegionChange' custom-item="{{customItem}}" class='pickerSex'>
+      <view class='picker paddL'>{{address1=="null"?"请填写":address1}}{{address2=="null"?"":address2}}</view>
+      <text class='iconfont icon-arrow-down'></text>
+    </picker>
+  </view>
+  <view class="section clearfix">
+    <view class="section__title">详细地址</view>
+    <view class='inp-wrapper'><input placeholder='街道、楼牌号等' name="input" bindinput='listenerAddressInput' value='{{address3=="null"?"请填写":address3}}' /></view>
+  </view>
+  <!-- <view class="section clearfix">
+    <view class="section__title">最高学历</view>
+    <picker bindchange="bindchangeEducation" value="{{eduIndex}}" range="{{eduArray}}" class='pickerSex'>
+      <view class="picker">
+        {{education=="null"?"请填写":education}}
+      </view>
+      <text class='iconfont icon-arrow-down'></text>
+    </picker>
+  </view> -->
+
+  <view class="section clearfix">
+    <view class="section__title" type="number">住宅属性</view>
+    <picker bindchange="bindchangeadd" value="{{addIndex}}" range="{{addArray}}" class='pickerSex'>
+      <view class="picker">
+        {{addresslabel=="null"?"请填写":addresslabel}}
+      </view>
+      <text class='iconfont icon-arrow-down'></text>
+    </picker>
+  </view>
+
+  <view class="section clearfix">
+    <view class="section__title" type="number">室内面积</view>
+    <picker bindchange="bindchangeroom" value="{{roomIndex}}" range="{{roomArray}}" class='pickerSex'>
+      <view class="picker">
+        {{roomarea=="null"?"请填写":roomarea}}
+      </view>
+      <text class='iconfont icon-arrow-down'></text>
+    </picker>
+  </view>
+
+  <view class="section clearfix">
+    <view class="section__title" type="number">室外面积</view>
+    <picker bindchange="bindchangecourt" value="{{courtIndex}}" range="{{courtArray}}" class='pickerSex'>
+      <view class="picker">
+        {{courtarea=="null"?"请填写":courtarea}}
+      </view>
+      <text class='iconfont icon-arrow-down'></text>
+    </picker>
+  </view>
+
+  <view class="section clearfix">
+    <view class="section__title" type="number">卧室个数</view>
+    <picker bindchange="bindchangebed" value="{{bedIndex}}" range="{{bedArray}}" class='pickerSex'>
+      <view class="picker">
+        {{bedroom=="null"?"请填写":bedroom}}
+      </view>
+      <text class='iconfont icon-arrow-down'></text>
+    </picker>
+  </view>
+
+  <view class="section clearfix">
+    <view class="section__title" type="number">餐厅个数</view>
+    <picker bindchange="bindchangeres" value="{{resIndex}}" range="{{resArray}}" class='pickerSex'>
+      <view class="picker">
+        {{restaurant=="null"?"请填写":restaurant}}
+      </view>
+      <text class='iconfont icon-arrow-down'></text>
+    </picker>
+  </view>
+
+  <view class="section clearfix">
+    <view class="section__title" type="number">卫生间个数</view>
+    <picker bindchange="bindchangewash" value="{{washIndex}}" range="{{washArray}}" class='pickerSex'>
+      <view class="picker">
+        {{washroom=="null"?"请填写":washroom}}
+      </view>
+      <text class='iconfont icon-arrow-down'></text>
+    </picker>
+  </view>
+
+  <view class="section clearfix">
+    <view class="section__title" type="number">常年住家人数</view>
+    <picker bindchange="bindchangepeople" value="{{peopleIndex}}" range="{{peopleArray}}" class='pickerSex'>
+      <view class="picker">
+        {{peoplecount=="null"?"请填写":peoplecount}}
+      </view>
+      <text class='iconfont icon-arrow-down'></text>
+    </picker>
+  </view>
+
+  <view class="section clearfix">
+    <view class="section__title" type="number">老人个数</view>
+    <picker bindchange="bindchangeold" value="{{oldIndex}}" range="{{oldArray}}" class='pickerSex'>
+      <view class="picker">
+        {{oldcount=="null"?"请填写":oldcount}}
+      </view>
+      <text class='iconfont icon-arrow-down'></text>
+    </picker>
+  </view>
+
+  <view class="section clearfix">
+    <view class="section__title" type="number">婴幼儿个数<view>（0-3岁）</view></view>
+    <picker bindchange="bindchangechild" value="{{childIndex}}" range="{{childArray}}" class='pickerSex'>
+      <view class="picker">
+        {{childcount=="null"?"请填写":childcount}}
+      </view>
+      <text class='iconfont icon-arrow-down'></text>
+    </picker>
+  </view>
+
+  <view class="section clearfix">
+    <view class="section__title" type="number">儿童个数<view>（3-12岁）</view></view>
+    <picker bindchange="bindchangeboy" value="{{boyIndex}}" range="{{boyArray}}" class='pickerSex'>
+      <view class="picker">
+        {{boycount=="null"?"请填写":boycount}}
+      </view>
+      <text class='iconfont icon-arrow-down'></text>
+    </picker>
+  </view>
+
+   <view class="section clearfix">
+    <view class="section__title">当前雇佣家政人数及分工</view>
+    <textarea class='self-estimate' placeholder='填写以当前雇佣家政人数及分工' name="input" bindinput='listenerdesInput' value='{{describes=="null"?"请填写":describes}}' />
+  </view>
+
+
+  <view class="btn-area">
+    <button class='formSubmit bgc3' bindtap='submit'>保存并提交</button>
+    <button class='formReset bgc3' bindtap="reset">重置</button>
+  </view>
+</form>

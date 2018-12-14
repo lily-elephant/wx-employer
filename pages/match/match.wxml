@@ -1,0 +1,19 @@
+<view class='container'>
+  <image src='../../asset/img/match.png' class='match-img'></image>
+  <text class='pay-count fsc3'>{{count}}</text>
+  <view class='align-c fs66 width-600 tips'>尊敬的客户
+    <view>以上是根据您的需求，匹配的高级阿姨月薪</view>
+  </view>
+  <view class='align-c fs99 width-600 desc'>
+    <view>
+      如果您认可推荐的月薪范围，点击 “可以” 预付1000元管理费后，我们会给您推荐匹配的家政人员供选择。
+    </view>
+    <view>
+      如果您不认可推荐的月薪范围，可进行修改需求，我们会根据您新需求重新匹配月薪。
+    </view>
+  </view>
+  <view class='btn-wrapper clearfix'>
+    <button size='mini' class='btn-primary f-left bg99' bindtap='change'>修改需求</button>
+    <button size='mini' class='btn-primary f-right bgc3' bindtap='agree'>可以</button>
+  </view>
+</view>

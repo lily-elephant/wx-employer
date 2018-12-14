@@ -1,0 +1,74 @@
+<view class='recommend-wrapper' wx:if="{{resource==1}}">
+  <view class='align-c fsc3 rec-tit'>为 您 推 荐</view>
+  <navigator url='../persondetail/persondetail?hide=1'>
+    <view class='recommend'>
+      <image src='../../asset/img/logo.png' class='rec-avatar'></image>
+      <view class='rec-content'>
+        <text class='rec-name'>{{recommend.name}}</text>
+        <text class='rec-other fs99'>{{recommend.experience}} {{recommend.degree}} {{recommend.address}}</text>
+        <view class='rec-desc fs66'>{{recommend.desc}}</view>
+      </view>
+      <view class='red rec-pay'>{{recommend.pay}}元/月</view>
+    </view>
+  </navigator>
+  <view class='bar'></view>
+</view>
+<form>
+  <view class='interview-top'>
+    <view class='align-c bordbd9 interview-pay' wx:if="{{resource==0}}">
+      预约金
+      <text class='red interview-money'>￥{{money}}</text>
+      <view class='interviewDes fs99'>说明：为有效保障双方权益，预约金暂由平台暂存，面试终止时会立即返回当前用户支付账户。</view>
+    </view>
+
+    <view class='interview-time'>
+      <picker mode="multiSelector" value="{{dateTime1}}" bindchange="changeDateTime1" bindcolumnchange="changeDateTimeColumn1" range="{{dateTimeArray1}}">
+        <view class="picker-detail">
+          面试时间 {{dateTimeArray1[0][dateTime1[0]]}}-{{dateTimeArray1[1][dateTime1[1]]}}-{{dateTimeArray1[2][dateTime1[2]]}} {{dateTimeArray1[3][dateTime1[3]]}}:{{dateTimeArray1[4][dateTime1[4]]}}
+        </view>
+      </picker>
+    </view>
+  </view>
+  <view class='bar' wx:if="{{resource==0}}"></view>
+  <view class='interview-addr {{resource==1 ? "adjust":""}}'>
+    <view class='bordbd9 interview-addr-tit'>面试地址</view>
+    <view class='interview-address'>
+      <picker bindchange="bindProvinceChange" value="{{provinceArray[provinceIndex]}}" range="{{provinceArray}}" name="province">
+        <view class="picker-detail">
+          省份 {{provinceArray[provinceIndex]}}
+        </view>
+      </picker>
+    </view>
+    <view class='interview-address'>
+      <picker bindchange="bindCityChange" value="{{cityArray[cityIndex]}}" range="{{cityArray}}" name="city">
+        <view class="picker-detail">
+          城市:{{cityArray[cityIndex]}}
+        </view>
+      </picker>
+    </view>
+    <view class='interview-address'>
+      <textarea class='picker-detail address-txt {{flag ? "" : "z-index"}}' bindblur="bindTextAreaBlur" auto-height placeholder="请输入" />
+    </view>
+  </view>
+  <view class='align-c gap-40'>
+    <button size='mini' class='btn-primary bgc3' bindtap='goAppoint'>立即预约</button>
+  </view>
+</form>
+<view class='cover' hidden='{{flag}}'>
+  <view class='modal align-c'>
+    <text>预约金支付</text>
+    <view class='pay-money'>￥ {{money}}</view>
+    <view class='bordbd9'>
+      <text>钱包余额</text>
+      <text class='remain'>{{remaining}}</text>
+      <text class='red notenough' wx:if="{{enoughFlag}}">余额不足请充值</text>
+      <view class='btn-wrapper'>
+        <button size='mini' class='btn-charge'>充值</button>
+      </view>
+    </view>
+    <view class='btn-wrapper2'>
+      <button size='mini' class='btn-primary bgc3' disabled='{{enoughFlag}}' bindtap='payTap'>立即支付</button>
+    </view>
+    <text class='iconfont icon-close' bindtap='close'></text>
+  </view>
+</view>

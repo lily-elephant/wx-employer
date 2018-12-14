@@ -1,0 +1,139 @@
+/* pages/interview/interview.wxss */
+
+.interview-top{
+  padding: 0 40rpx;
+}
+.interview-pay{
+  padding: 54rpx 0 34rpx;
+  line-height: 1;
+}
+.interview-money{
+  margin-left: 120rpx;
+}
+.interview-time{
+  padding: 40rpx 0;
+}
+.picker-detail{
+  padding: 0 16rpx;
+  line-height: 80rpx;
+  height: 80rpx;
+  border: 1rpx solid #d9d9d9;
+  border-radius: 3px;
+  box-sizing: border-box;
+}
+.interview-addr{
+  padding: 30rpx 40rpx;
+}
+.interview-addr-tit{
+  line-height: 1;
+  padding: 10rpx 0 18rpx 16rpx;
+}
+.interview-address{
+  padding: 30rpx 0 0;
+}
+.address-txt{
+  padding: 10rpx 16rpx;
+  line-height: 36rpx;
+  font-size: 28rpx;
+  width: 100%;
+  min-height: 200rpx;
+}
+.z-index{
+  position: relative;
+  z-index: -1;
+}
+.modal{
+  position: relative;
+  margin: 60rpx 40rpx 0;
+  padding: 34rpx 80rpx 0;
+  background: #fff;
+  box-sizing: border-box;
+  border-radius: 4px;
+}
+.icon-close{
+  padding: 10rpx;
+  position: absolute;
+  top: 0;
+  right: 0;
+  font-size: 48rpx;
+  color: #666;
+}
+.pay-money{
+  padding: 64rpx 0;
+  margin: 34rpx 0;
+  font-size: 48rpx;
+  border-top: 1rpx solid #d9d9d9;
+  border-bottom: 1rpx solid #d9d9d9;
+}
+.remain{
+  display: block;
+  line-height: 1;
+  padding: 24rpx 0;
+  font-size: 36rpx;
+}
+.notenough{
+  font-size: 26rpx;
+}
+.btn-wrapper{
+  padding: 24rpx 0 34rpx;
+}
+.btn-charge{
+  padding: 0 72rpx!important;
+  background: #7dc1e0;
+  color: #fff;
+}
+.btn-wrapper2{
+  padding: 80rpx 0;
+}
+.btn-primary{
+  box-shadow: none;
+}
+
+.rec-tit{
+  padding: 20rpx 0;
+}
+.recommend{
+  padding: 16rpx 40rpx 40rpx;
+  display: flex;
+  position: relative;
+}
+.rec-avatar{
+  display: block;
+  flex: 0 0 102rpx;
+  height: 102rpx;
+  border: 4rpx solid #999;
+  border-radius: 50%;
+}
+.rec-content{
+  padding: 0 0 0 36rpx;
+  line-height: 1;
+}
+.rec-name{
+  font-size: 28rpx;
+}
+.rec-other{
+  display: block;
+  margin: 12rpx 0;
+  font-size: 22rpx;
+}
+.rec-desc{
+  font-size: 26rpx;
+  width: 340rpx;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.rec-pay{
+  position: absolute;
+  bottom: 40rpx;
+  right: 40rpx;
+}
+.adjust{
+  padding: 0 40rpx 30rpx;
+}
+.interviewDes{
+  padding:35rpx 0 15rpx;
+  font-size:24rpx;
+  text-align:left;
+  line-height:1.2;
+}

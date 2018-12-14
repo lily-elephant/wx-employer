@@ -1,0 +1,57 @@
+{
+  "pages":[
+    "pages/index/index",
+    "pages/me/me",
+    "pages/aboutus/aboutus",
+    "pages/feedback/feedback",
+    "pages/myfeedback/myfeedback",
+    "pages/myinfo/myinfo",
+    "pages/personalinfo/personalinfo",
+    "pages/interviewrecord/interviewrecord",
+    "pages/giveup/giveup",
+    "pages/persondetail/persondetail",
+    "pages/order/order",
+    "pages/interview/interview",
+    "pages/meetsuccess/meetsuccess",
+    "pages/login/login",
+    "pages/publish/publish",
+    "pages/editneed/editneed",
+    "pages/match/match",
+    "pages/knowledge/knowledge",
+    "pages/identify/identify",
+    "pages/register/register",
+    "pages/findpwd/findpwd",
+    "pages/editMyInfo/editMyInfo",
+    "pages/bannerDes/bannerDes"
+  ],
+  "window":{
+    "backgroundTextStyle":"light",
+    "navigationBarBackgroundColor": "#c3b798",
+    "navigationBarTitleText": "要管家",
+    "navigationBarTextStyle":"white"
+  },
+  "tabBar": {
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "iconPath": "asset/img/home.png",
+        "selectedIconPath": "asset/img/home_active.png",
+        "text": "首页"
+      },
+      {
+        "pagePath": "pages/interviewrecord/interviewrecord",
+        "iconPath": "asset/img/interview.png",
+        "selectedIconPath": "asset/img/interview_active.png",
+        "text": "面试"
+      },
+      {
+        "pagePath": "pages/me/me",
+        "iconPath": "asset/img/me.png",
+        "selectedIconPath": "asset/img/me_active.png",
+        "text": "我的"
+      }
+    ],
+    "color": "#999999",
+    "selectedColor": "#c3b798"
+  }
+}

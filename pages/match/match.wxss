@@ -1,0 +1,37 @@
+/* pages/match/match.wxss */
+.container{
+  padding: 64rpx 40rpx 0;
+}
+.match-img{
+  display: block;
+  margin: 0 auto;
+  width: 192rpx;
+  height: 184rpx;
+}
+.width-600{
+  margin: 0 auto;
+  width: 600rpx;
+}
+.pay-count{
+  display: block;
+  line-height: 1;
+  padding: 36rpx 0 30rpx;
+  text-align: center;
+  font-size: 48rpx;
+}
+.tips{
+  padding-bottom: 120rpx;
+  line-height: 2;
+  font-size: 30rpx;
+  white-space: nowrap;
+}
+.desc{
+  padding-bottom: 120rpx;
+  line-height: 2;
+  font-size: 30rpx;
+}
+.btn-wrapper .btn-primary{
+  padding: 0!important;
+  width: 258rpx;
+  text-align: center;
+}

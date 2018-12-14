@@ -1,0 +1,124 @@
+{
+	"description": "项目配置文件。",
+	"packOptions": {
+		"ignore": []
+	},
+	"setting": {
+		"urlCheck": true,
+		"es6": true,
+		"postcss": true,
+		"minified": false,
+		"newFeature": true
+	},
+	"compileType": "miniprogram",
+	"libVersion": "2.0.4",
+	"appid": "wx021a803fe9f6ebf2",
+	"projectname": "new9271700",
+	"isGameTourist": false,
+	"condition": {
+		"search": {
+			"current": -1,
+			"list": []
+		},
+		"conversation": {
+			"current": -1,
+			"list": []
+		},
+		"plugin": {
+			"current": -1,
+			"list": []
+		},
+		"game": {
+			"currentL": -1,
+			"list": []
+		},
+		"miniprogram": {
+			"current": 13,
+			"list": [
+				{
+					"id": -1,
+					"name": "index",
+					"pathName": "pages/index/index",
+					"query": ""
+				},
+				{
+					"id": 1,
+					"name": "interviewrecord",
+					"pathName": "pages/interviewrecord/interviewrecord",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "aboutus",
+					"pathName": "pages/aboutus/aboutus",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "editneed",
+					"pathName": "pages/editneed/editneed",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "feedback",
+					"pathName": "pages/feedback/feedback",
+					"query": ""
+				},
+				{
+					"id": 5,
+					"name": "findpwd",
+					"pathName": "pages/findpwd/findpwd",
+					"query": "phoneNumber=18811011841"
+				},
+				{
+					"id": -1,
+					"name": "giveup",
+					"pathName": "pages/giveup/giveup",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "login",
+					"pathName": "pages/login/login",
+					"query": ""
+				},
+				{
+					"id": 8,
+					"name": "register",
+					"pathName": "pages/register/register",
+					"query": "phoneNumber=18811011841"
+				},
+				{
+					"id": -1,
+					"name": "identify",
+					"pathName": "pages/identify/identify",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "me",
+					"pathName": "pages/me/me",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "publish",
+					"pathName": "pages/publish/publish",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "publish",
+					"pathName": "pages/publish/publish",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "persondetail",
+					"pathName": "pages/persondetail/persondetail"
+				}
+			]
+		}
+	}
+}

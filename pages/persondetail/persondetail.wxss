@@ -1,0 +1,228 @@
+/* pages/persondetail/persondetail.wxss */
+page{
+  background:#fff;
+}
+.person-info{
+  position: relative;
+  padding: 36rpx 40rpx;
+  margin: 0 0 10rpx;
+  display: flex;
+  background: #fff;
+  border-bottom:5px solid #eee;
+}
+.person-img{
+  flex: 0 0 100rpx;
+  width: 100rpx;
+  border: 4rpx solid #999;
+  border-radius: 50%;
+  height: 100rpx;
+}
+.person-base{
+  margin-left: 30rpx;
+  font-size: 30rpx;
+}
+.person-other{
+  display: block;
+  line-height: 1;
+  margin: 12rpx 0;
+  font-size: 24rpx;
+}
+.person-goods{
+  width: 410rpx;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-size: 28rpx;
+}
+.person-pay{
+  position: absolute;
+  right: 40rpx;
+  bottom: 36rpx;
+  font-size: 28rpx;
+}
+.tabs-header{
+  padding: 0 40rpx;
+  background: #fff;
+}
+.tabs-header-con{
+  display: flex;
+}
+.tabs-item{
+  flex: 1;
+  line-height: 86rpx;
+  text-align: center;
+  color: #999;
+}
+.tabs-header-con .active{
+  position: relative;
+  color: #333;
+}
+.tabs-header-con .active::before{
+  content: '';
+  position: absolute;
+  bottom: -3rpx;
+  left: 0;
+  background: #c3b798;
+  height: 7rpx;
+  width: 100%;
+}
+.basedata{
+  padding: 0 40rpx 30rpx;
+  margin-bottom: 10rpx;
+  background: #fff;
+  font-size: 30rpx;
+  border-bottom:5px solid #eee;
+}
+.row{
+  padding-top: 30rpx;
+  text-align: right;
+  color: #999;
+}
+.review-tit{
+  position: relative;
+  padding: 0 40rpx;
+  margin-bottom: 10rpx;
+  line-height: 86rpx;
+  background: #fff;
+}
+.review-left{
+  display: flex;
+}
+.review-icon{
+  flex: 0 0 30rpx;
+  width: 30rpx;
+  height: 37rpx;
+  margin: 23rpx 20rpx 0 0;
+}
+.review-counts{
+  position: absolute;
+  right: 40rpx;
+  bottom: 0;
+  font-size: 28rpx;
+}
+.review-wrapper{
+  padding: 0 40rpx;
+  background: #fff;
+}
+.review-item{
+  position: relative;
+  display: flex;
+  padding: 30rpx 0;
+  font-size: 30rpx;
+}
+.review-time{
+  position: absolute;
+  top: 30rpx;
+  right: 0;
+  font-size: 26rpx;
+}
+.employer-img{
+  margin-right: 20rpx;
+  flex: 0 0 43rpx;
+  height: 43rpx;
+}
+.star{
+  line-height: 1;
+  margin: 16rpx 0;
+}
+.employer-words{
+  line-height: 40rpx;
+  text-align: justify;
+}
+.certificate{
+  padding: 30rpx 0;
+  margin-bottom: 10rpx;
+  background: #fff;
+}
+.certificate-img{
+  display: block;
+  margin: 0 auto;
+  max-width: 100%;
+}
+.certifate-intro{
+  padding: 40rpx;
+  line-height: 2;
+  text-indent: 2em;
+  background: #fff;
+}
+.certifate-time{
+  padding: 30rpx 40rpx;
+  background: #fff;
+  color: #fff;
+}
+.certifate-time-con{
+  padding: 0 14rpx;
+  line-height: 40rpx;
+}
+.selfInfo{
+  display:inline-block;
+  width:78%;
+  /* text-align:justify; */
+}
+.lines{
+  line-height: 1.6;
+  padding: 24rpx;
+  position: relative;
+  margin-bottom: 20rpx;
+  box-shadow: 0 0 5px #c3b798;
+}
+.lines-03{
+  line-height: 1.6;
+  padding: 24rpx;
+  position: relative;
+  box-shadow: 0 0 5px #c3b798;
+}
+.credit-tit{
+  position: relative;
+  padding: 0 20rpx 0 50rpx;
+  display: inline-block;
+  border: 1rpx solid #37928d;
+  border-radius: 30rpx;
+  background: #dcf3f3;
+  color: #37928d;
+  font-size: 30rpx;
+  height: 48rpx;
+  line-height: 48rpx;
+}
+.credit-num{
+  position: absolute;
+  left: 0;
+  top: 0;
+  background: #00997d;
+  border-radius: 50%;
+  height: 48rpx;
+  width: 48rpx;
+  text-align: center;
+  color: #fff;
+}
+.fake{
+  color: #f5c16d;
+  /* font-size: 36rpx; */
+}
+.true{
+  color: #32972d;
+  /* font-size: 36rpx; */
+}
+.credit-img{
+  position: absolute;
+  right: 6rpx;
+  top: 8rpx;
+  width: 200rpx;
+  height: 152rpx;
+}
+.space{
+  margin-bottom: 10rpx;
+}
+.credit{
+  margin-top: 10px ;
+  padding-bottom: 20px ;
+}
+.padd40{
+  padding: 0 40rpx;
+}
+.textalign{
+  text-align: left;
+}
+.textIndx{
+  text-indent: 2em;
+}

@@ -1,0 +1,110 @@
+/**app.wxss**/
+@import "./asset/font/iconfont.wxss";
+
+page {
+  background: #fff;
+  color: #333;
+  font-size: 32rpx;
+}
+
+.bgc3 {
+  background: #c3b798;
+}
+.bg99{
+  background: #999;
+}
+.fs33 {
+  color: #333;
+}
+
+.fs66 {
+  color: #666;
+}
+
+.fs99 {
+  color: #999;
+}
+.fsee{
+  color: #eee;
+}
+.fsc3 {
+  color: #c3b798;
+}
+.red{
+  color: #f25454;
+}
+.orange{
+  color: #eea018;
+}
+.green{
+  color: #12e060;
+}
+.purple{
+  color: #6d7590;
+}
+.btn-primary {
+  padding: 0 150rpx !important;
+  font-size: 36rpx !important;
+  color: #fff;
+  box-shadow: 0 0 5px #c3b798;
+}
+
+.clearfix::after {
+  content: ".";
+  clear: both;
+  display: block;
+  overflow: hidden;
+  font-size: 0;
+  height: 0;
+}
+
+.f-left {
+  float: left;
+}
+
+.f-right {
+  float: right;
+}
+.bordbd9{
+  border-bottom: 1rpx solid #d9d9d9;
+}
+.align-c{
+  text-align: center;
+}
+.align-l{
+  text-align: left;
+}
+.align-r{
+  text-align: right;
+}
+.gap-40{
+  padding: 40rpx 0;
+}
+.gap-24{
+  padding: 24rpx 0;
+}
+.bar{
+  height: 10rpx;
+  width: 100%;
+  background: #eee;
+}
+.cover{
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(0,0,0,0.7);
+}
+.w100{
+  width: 100%!important;
+}
+.gap-350{
+  padding: 350rpx 0;
+}
+.fs24{
+  font-size: 24rpx;
+}
+.fs30{
+  font-size: 30rpx;
+}

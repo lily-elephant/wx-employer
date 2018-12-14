@@ -1,0 +1,36 @@
+<view class='info-base'>
+  <image src='{{imgUrl}}' class='info-avatar'></image>
+  <text class='employer-name'>{{name==null?"未填写":name}}</text>
+</view>
+<view class='bar'></view>
+<view class='info-data'>
+  <view class='info-title bordbd9'>
+    <text class='fsc3 iconfont icon-editavatar'></text>基本信息
+  </view>
+  <view class='info-detail'>
+    <view class='row align-r fs99'><text class='f-left fs66'>身份证号</text> {{idcard == null ? "未填写":idcard}}</view>
+    <view class='row align-r fs99'><text class='f-left fs66'>手机号码</text> {{username == null ? "未填写":username}}</view>
+    <view class='row align-r fs99'><text class='f-left fs66'>年龄</text> {{age == null ? "未填写":age}}</view>
+    <view class='row align-r fs99'><text class='f-left fs66'>性别</text> {{sex == null ? "未填写":sex}}</view>
+    <view class='row align-r fs99'><text class='f-left fs66'>籍贯</text> {{address1 == null ? "未填写":address1}}{{address2 == null ? "":address2}}{{address3 == null ? "":address3}}</view>
+    <!-- <view class='row align-r fs99'><text class='f-left fs66'>最高学历</text> {{education == null ? "未填写":education}}</view> -->
+
+    <view class='row align-r fs99'><text class='f-left fs66'>住宅属性</text> {{addresslabel == null ? "未填写":addresslabel}}</view>
+    <view class='row align-r fs99'><text class='f-left fs66'>室内面积</text> {{roomarea == null ? "未填写":roomarea}}</view>
+    <view class='row align-r fs99'><text class='f-left fs66'>室外面积</text> {{courtarea == null ? "未填写":courtarea}}</view>
+    <view class='row align-r fs99'><text class='f-left fs66'>卧室数量</text> {{bedroom == null ? "未填写":bedroom}}</view>
+    <view class='row align-r fs99'><text class='f-left fs66'>餐厅数量</text> {{restaurant == null ? "未填写":restaurant}}</view>
+    <view class='row align-r fs99'><text class='f-left fs66'>卫生间数量</text> {{washroom == null ? "未填写":washroom}}</view>
+    <view class='row align-r fs99'><text class='f-left fs66'>常年住家人数</text> {{peoplecount == null ? "未填写":peoplecount}}</view>
+    <view class='row align-r fs99'><text class='f-left fs66'>老人个数</text> {{oldcount == null ? "未填写":oldcount}}</view>
+    <view class='row align-r fs99'><text class='f-left fs66'>婴幼儿个数（0-3岁）</text> {{childcount == null ? "未填写":childcount}}</view>
+    <view class='row align-r fs99'><text class='f-left fs66'>儿童个数（3-12岁）</text> {{boycount == null ? "未填写":boycount}}</view>
+    <view class='row clearfix align-r fs99'><text class='f-left fs66'>当前雇佣家政人数及分工</text>
+    <view class='{{describes == null ? "f-right" : "hasdata"}}'> {{describes == null ? "未填写":describes}}</view></view>
+
+    <view class='row align-r fs99 clearfix' bindtap='goNeed'><text class='f-left fs66'>家政需求</text><text class='iconfont icon-arrow-right'></text></view>
+  </view>
+</view>
+<view class='align-c btn-wrapper'>
+  <button size='mini' class='btn-primary bgc3' bindtap='goEdit'>编辑</button>
+</view> 

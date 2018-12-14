@@ -1,0 +1,15 @@
+.container{
+  padding: 60rpx 0;
+  font-size: 24rpx;
+}
+.success-img{
+  display: block;
+  margin: 0 auto;
+  width: 198rpx;
+  height: 172rpx;
+}
+.success{
+  line-height: 1;
+  padding: 30rpx 0;
+  font-size: 36rpx;
+}

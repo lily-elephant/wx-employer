@@ -1,0 +1,12 @@
+<image src="../../asset/img/chance.jpg" class='chance-img'></image>
+<view class='main align-c'>
+  您确定放弃该服务人员吗？
+  <view class='giveup fs66'>
+    若确定放弃后，平台会自动给您推送另外一名服务人员
+    <view>您可查看服务人员详情信息后决定是否安排面试</view>
+  </view>
+  <view class='btn-wrapper clearfix'>
+    <button size='mini' class='btn-primary f-left bg99' bindtap='cancelTap'>取  消</button>
+    <button size='mini' class='btn-primary f-right bgc3' bindtap='sureTap'>确定放弃</button>
+  </view>
+</view>

@@ -1,0 +1,152 @@
+<!-- 头部信息 -->
+<view class='person-info'>
+  <image class='person-img' src='{{person.headimageurl}}'></image>
+  <view class='person-base'>
+    <text class='person-name'>{{person.name == null ? "未填写" : person.name}}</text>
+    <text class='person-other fs99'>{{person.workdate == null ? "0" : person.workdate}}年 {{person.education == null ? "未填写" : person.education}} {{person.address1 == null ? "未填写" : person.address1}}</text>
+    <view class='person-goods fs66'>{{person.sex == null ? "未填写" : person.sex}}</view>
+  </view>
+  <view class='person-pay red'>{{person.salary == null ? "0" : person.salary}}元/月</view>
+</view>
+<!-- tabs -->
+<view class='tab-box'>
+  <view class='tabs-header'>
+    <view class='bordbd9 tabs-header-con'>
+      <text wx:for='{{tabsArr}}' wx:key='index' class='tabs-item {{currentTab==index ? "active" : ""}}' bindtap='tabHandle' data-idx='{{index}}'>{{item}}</text>
+    </view>
+  </view>
+  <view class='tabs-content' hidden='{{currentTab!=0}}'>
+    <view class='basedata'>
+      <view class='row' hidden='ture'>
+        <text class='f-left fs66'>身份证号</text>{{person.idcard}}</view>
+      <view class='row' hidden='ture'>
+        <text class='f-left fs66'>手机号码</text>{{person.username}}</view>
+      <view class='row'>
+        <text class='f-left fs66'>性别</text>{{person.sex == null ? "未填写" : person.sex}}</view>
+      <view class='row'>
+        <text class='f-left fs66'>年龄</text>{{person.age == null ? "0" : person.age}}</view>
+      <view class='row'>
+        <text class='f-left fs66'>籍贯</text>{{person.address1 == null ? "未填写" : person.address1}} {{person.address2 == null ? "" : person.address2}}</view>
+      <view class='row'>
+        <text class='f-left fs66'>最高学历</text>{{person.education == null ? "未填写" : person.education}}</view>
+
+        <view class='row'>
+        <text class='f-left fs66'>婚育状况</text>{{person.marry == null ? "未填写" : person.marry}}</view>
+        <view class='row'>
+        <text class='f-left fs66'>有无驾照</text>{{person.isdrive == null ? "未填写" : person.isdrive}}</view>
+        <view class='row'>
+        <text class='f-left fs66'>现居住地</text>{{person.nativeplace == null ? "未填写" : person.nativeplace}}</view>
+
+      <view class='row'>
+        <text class='f-left fs66'>工作经历</text>
+        <text class='selfInfo clearfix textalign'>{{person.describes == null || person.describes =="" ? "未填写" : person.describes}}</text>
+      </view>
+      <view class='row'>
+        <text class='f-left fs66'>自我评价</text>
+        <text class='selfInfo clearfix textalign'>{{person.brief == null ? "未填写" : person.brief}}</text>
+      </view>
+      <view class='row'>
+        <text class='f-left fs66'>目前状态</text>{{person.servicestate}}</view>
+    </view>
+    <view class='review-tit' hidden='ture'>
+      <view class='review-left'>
+        <image class='review-icon' src='../../asset/img/review.png'></image>
+        雇主评价
+      </view>
+      <view class='review-counts fs99' wx:if="{{reviewArr&&reviewArr.length>0}}">
+        共有
+        <text class='red'>{{reviewArr.length}}</text> 条评价</view>
+    </view>
+    <view class='review-wrapper' hidden='ture'>
+      <view wx:if="{{reviewArr&&reviewArr.length==0}}" class='align-c fs99 gap-40'>暂无评价</view>
+      <view class='review-item bordbd9' wx:for='{{reviewArr}}' wx:key='index' wx:for-item='employer'>
+        <image class='employer-img' src='{{globalimgeurl}}{{employer.headimageurl}}'></image>
+        <view class='review-content fs66'>
+          <view class='employer-info'>{{employer.name}} {{employer.username}}</view>
+          <view class='star'>
+            评价：
+            <text class='iconfont icon-star fsc3' wx:for="{{employer.score}}" wx:key='index'></text>
+          </view>
+          <view class='employer-words'>
+            <text>留言：</text> {{employer.content}}
+          </view>
+        </view>
+        <text class='review-time fs99'>{{employer.creaate_time}}</text>
+      </view>
+      <!-- <view class='align-c gap-40' wx:if="{{hideFlag}}">
+        <button class='btn-primary bgc3' size='mini' bindtap='goInterview' data-hkid='{{person.hkid}}'>发起面试</button>
+      </view> -->
+    </view>
+    <view class='review-wrapper'>
+      <view class='align-c gap-40' wx:if="{{hideFlag}}">
+        <button class='btn-primary bgc3' size='mini' bindtap='goInterview' data-hkid='{{person.hkid}}'>发起面试</button>
+      </view>
+    </view>
+  </view>
+  <view class='tabs-content' hidden='{{currentTab!=1}}'>
+    <view wx:if="{{certificatelist&&certificatelist.length==0}}" class='align-c fs99 gap-40 gap-350'>暂未获得任何证书</view>
+    <view wx:for='{{certificatelist}}' wx:key='index' wx:for-item='certificate'>
+      <view class='certificate'>
+        <image src='{{globalimgeurl}}{{certificate.picture}}' mode='widthFix' class='certificate-img'></image>
+        <view class='certifate-intro'>
+          {{certificate.name}}
+        </view>
+        <view class='certifate-time'>
+          <view class='bgc3 align-r certifate-time-con'>
+            <text class='f-left'>获取时间</text>{{certificate.create_time}}</view>
+        </view>
+      </view>
+    </view>
+  </view>
+  <!--征信结果展示-->
+  <view class='tabs-content padd40' hidden='{{currentTab!=2}}'>
+    <view wx:if="{{auth_time == null }}" class='align-c fs99 gap-40 gap-350'>暂无数据</view>
+
+    <view wx:else class='credit'>
+      <!--1、身份证验证-->
+      <view class='lines'>
+        <view class='credit-tit space'>
+          <text class='credit-num'>1</text>身份证验证</view>
+        <view class='fs24 space fs99'>查询时间：{{auth_time}}</view>
+        <view class="space {{identity_auth == '1' ? 'true' : 'fake'}} fs30">{{identity_auth == '1' ? '身份证号码与姓名核对一致' : '身份证号码与姓名核对不一致'}}</view>
+        <view class='fs24 fs99'>该数据直连官方身份证中心，覆盖全中国13亿人口，实时核查返回结果，保证100%的真实数据！</view>
+        <image class='credit-img' src='{{identity_auth == "1" ? "../../asset/img/truetest.png" : "../../asset/img/faketest.png"}}'></image>
+      </view>
+      <!--2、犯罪记录查询-->
+      <view class='lines'>
+        <view class='credit-tit space'>
+          <text class='credit-num'>2</text>犯罪记录查询</view>
+        <view class='fs24 fs99 space'>查询时间：{{auth_time}}</view>
+        <view class="space {{identity_auth == '1' ? 'true' : 'fake'}} fs30">{{laolai_auth == '1' ? '该用户信用正常，没有犯罪记录' : '该用户信用不正常，存在犯罪记录'}}</view>
+        <view class='fs24 fs99'>犯罪记录（失信被执行人）是指被人民法院判决需承担责任，但恶意不执行判决的人。该数据来源于中国最高人民法院官方公开数据。</view>
+        <image class='credit-img' src='{{laolai_auth == "1" ? "../../asset/img/truecredit.png" : "../../asset/img/fakecredit.png"}}'></image>
+      </view>
+      <!--3、手机号是否常用-->
+      <view class='lines-03'>
+        <view class='credit-tit space'>
+          <text class='credit-num'>3</text>手机号是否常用</view>
+        <view class='fs24 space fs99'>查询时间：{{auth_time}}</view>
+        <view class="space {{identity_auth == '1' ? 'true' : 'fake'}} fs30">{{phonenumber_auth == '1' ? '该手机号一直为本人使用' : '该手机号可能不是本人常用的'}}</view>
+        <view class='fs24 fs99'>该数据取自运营商大数据，主要是指在生活场景中，是否本人经常使用该手机号，仅供参考。</view>
+        <image class='credit-img' src='{{phonenumber_auth == "1" ? "../../asset/img/truestate.png" : "../../asset/img/fakestate.png"}}'></image>
+      </view>
+    </view>
+  </view>
+
+  <view class='tabs-content padd40' hidden='{{currentTab!=3}}'>
+    <text>1、九型人格测试结果：</text>
+    <view wx:if="{{!result}}" class='align-c fs99 gap-40'>暂未测试</view>
+    <view wx:else class='credit'>
+      <view wx:for='{{result}}' wx:key='index' wx:for-item='item' class='textIndx'>
+        {{item.des}}: {{item.count}}
+      </view>
+    </view>
+    <text>2、卡特尔16种人格因素测试结果：</text>
+    <view wx:if="{{!result2}}" class='align-c fs99 gap-40'>暂未测试</view>
+    <view wx:else class='credit'>
+      <view wx:for='{{result2}}' wx:key='index' wx:for-item='item' class='textIndx'>
+        {{item.des}}: {{item.count}}
+      </view>
+    </view>
+  </view>
+</view>
