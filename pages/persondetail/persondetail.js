@@ -4,36 +4,36 @@ Page({
     hideFlag: undefined, // 发起面试按钮显示与否，1表示隐藏，0表示显示
     startpage: 1,
     pageCount: 1,
-    // 家政人员基本信息
-    // person: {
-    //   name: '赵阿姨',
-    //   experience: '36个月',
-    //   degree: '中专',
-    //   address: '黑龙江',
-    //   goods: '做家务，全职带孩子',
-    //   pay: 3500,
-    //   age: 36,
-    //   certiNum: '411422198201011223',
-    //   phoneNum: '13800000000',
-    //   category: '保姆、育儿嫂',
-    //   addr: '北京',
-    //   reviewself: '做家务，全职带孩子',
-    //   state: '待岗'
-    // },
     tabsArr: ['基本信息', '获得证书','征信信息','性格信息'],
     // 雇主评论信息
-    reviewArr: [
-      // {
-      //   phone: '135****2214',
-      //   stars: 4,
-      //   satisfy: '非常满意',
-      //   time: '2018-06-12',
-      //   message: '张阿姨做事认真，勤快，烧的川菜好吃的不得了，家务做的很好，我们全家都喜欢她。'
-      // }
-    ],
+    reviewArr: [],
     currentTab: 0, // 初始基本信息
-    globalimgeurl: app.globalData.imgeurl
+    globalimgeurl: app.globalData.imgeurl,
+    collectFlag: false, // 收藏与否的状态
   },
+  /*
+  * 点击视频简历
+  */
+  videoIntro(){
+    
+  },
+  /*
+  * 点击收藏按钮
+  */ 
+  collect(){
+    this.setData({
+      collectFlag: !this.data.collectFlag
+    })
+  },
+  /*
+  * 点击申请签约
+  */ 
+  apply(){
+
+  },
+
+
+
   // tab切换
   tabHandle: function(e) {
     this.setData({

@@ -12,8 +12,109 @@ Page({
     lists: [],
     startpage:1,
     pageCount:10,
-    globalimgeurl: app.globalData.imgeurl
+    globalimgeurl: app.globalData.imgeurl,
+    filterFlag: true, // 筛选条件显示与否
+    needFlag: true, // 需求下拉显示与否
+    captionNeed: '需求1', //展示的需求文字
+    optArr: [
+      { label: '需求1', value: 'n1' },
+      { label: '需求2', value: 'n1' },      
+    ], //已有需求
+    //人员类别
+    classicArr: [
+      { label: '保姆', value: 'c1' },
+      { label: '月嫂', value: 'c2' },
+      { label: '管家', value: 'c3' },
+      { label: '育儿嫂', value: 'c4' },
+      { label: '司机', value: 'c5' },
+    ],
+    // 认证级别
+    levelArr: [
+      { label: 'B1', value: 'l1' },
+      { label: 'B2', value: 'l2' },
+      { label: 'B3', value: 'l3' },
+      { label: 'B4', value: 'l4' },
+      { label: 'B5', value: 'l5' },
+      { label: 'B6', value: 'l6' },      
+    ],
+  },
+  /**
+   * v2版本事件
+   * */ 
+  // 点击筛选
+  filter(){
+    this.setData({
+      filterFlag: false
+    })
+  },
+  // 隐藏筛选弹层
+  hideFilter(){
+    this.setData({
+      filterFlag: true
+    })
+  },
+  // 阻止冒泡
+  stopBubble(){},
+  // 点击筛选条件人员类别
+  onTap1(e){
+    let ev = e.currentTarget.dataset;
+    this.data.classicArr.forEach((item, index) => {
+      if(ev.idx == index){
+        item.flag = !item.flag
+      }
+    })
+    this.setData({
+      classicArr: this.data.classicArr
+    })
+  },
+  // 点击筛选条件认证类别
+  onTap2(e) {
+    let ev = e.currentTarget.dataset;
+    this.data.levelArr.forEach((item, index) => {
+      if (ev.idx == index) {
+        item.flag = !item.flag
+      }
+    })
+    this.setData({
+      levelArr: this.data.levelArr
+    })
+  },
+  // 重置筛选条件
+  reset(){
+    this.data.levelArr.forEach((item) => {
+      item.flag = false
+    })
+    this.data.classicArr.forEach((item) => {
+      item.flag = false
+    })
+    this.setData({
+      classicArr: this.data.classicArr,
+      levelArr: this.data.levelArr
+    })
+  },
+  // 确认筛选条件
+  confirm(){
+    this.setData({
+      filterFlag: true
+    })
+  },
+  // 新增需求
+  addNeed(){
 
+  },
+  // 点击具体需求
+  tapNeed(e){
+    let cap = e.currentTarget.dataset.cap;
+    this.setData({
+      captionNeed: cap,
+      needFlag: true
+    })
+  },
+  // 点击需求文字
+  needToggle(){
+    this.setData({
+      needFlag: !this.data.needFlag
+    })
   },
   //事件处理函数
   dianZan: function(e){

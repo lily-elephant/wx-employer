@@ -1,6 +1,7 @@
 {
   "pages":[
     "pages/index/index",
+    "pages/sign/sign",
     "pages/me/me",
     "pages/aboutus/aboutus",
     "pages/feedback/feedback",
@@ -39,10 +40,10 @@
         "text": "首页"
       },
       {
-        "pagePath": "pages/interviewrecord/interviewrecord",
+        "pagePath": "pages/sign/sign",
         "iconPath": "asset/img/interview.png",
         "selectedIconPath": "asset/img/interview_active.png",
-        "text": "面试"
+        "text": "签约"
       },
       {
         "pagePath": "pages/me/me",

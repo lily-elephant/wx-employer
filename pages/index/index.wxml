@@ -1,42 +1,76 @@
 <!--index.wxml-->
-<swiper class='swiper-wrapper' indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" indicator-color="#c4c4c4" indicator-active-color="#c3b798" >
-  <block wx:for="{{bannerList}}" wx:key = "index" >
-    <swiper-item>
-      <view>
-      <image src="{{globalimgeurl}}{{item.picture}}" class="slide-image" bindtap='jump' data-data='{{item}}' ></image>
-      </view>
-    </swiper-item>
-  </block>
-</swiper>
-<view class='align-c btn-wrapper'>
-  <button class='btn-primary bgc3 radius' size='mini'>为你推荐</button>
-</view>
-<!-- 没有数据 -->
-<view class='nodata align-c fs99' wx:if="{{list&&list.length==0}}">
-  <text class='nodata-tips'>暂无满足您的人员提供您可修改需求发布后我们再进行匹配</text>
-  <view class='align-c'>
-    <button size='mini' class='btn-primary bgc3'>修改需求</button>
-  </view>
-</view>
-<!-- 数据存在 -->  
-<view class='container' wx:else>
-  <view class='item' wx:for="{{list}}" wx:key = "index" wx:for-item="item" wx:for-index="index">
-    <navigator url='../persondetail/persondetail?username={{item.username}}&hkid={{item.hkid}}' class='item-link'>
-      <image src='{{item.headimageurl}}' class='item-img'></image>
-      <!-- <image :src='{{item.imgUrl}}' class='item-img'></image> -->
-      <view class='item-main'>
-        <view class='item-info'>
-          <text class='item-name'>{{item.name == null ? "未填写" : item.name}}</text>
-          <text class='item-other fs99'>{{item.idcard== null ? "未填写" : item.idcard}} {{item.workdate== null ? "0" : item.workdate}}年 {{item.education== null ? "未填写" : item.education}} {{item.address1== null ? "未填写" : item.address1}}</text>
+<view>
+  <swiper class='swiper-wrapper' indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" indicator-color="#c4c4c4" indicator-active-color="#c3b798">
+    <block wx:for="{{bannerList}}" wx:key="index">
+      <swiper-item>
+        <view>
+          <image src="{{globalimgeurl}}{{item.picture}}" class="slide-image" bindtap='jump' data-data='{{item}}'></image>
         </view>
-        <view class='item-desc fs66'>{{item.brief== null ? "未填写" : item.brief}}</view>
+      </swiper-item>
+    </block>
+  </swiper>
+  <view class='align-c middle-wrapper'>
+    <view class="need-wrapper">
+      <view class="need-show" bindtap="needToggle">
+      {{captionNeed}}
+      <text class="iconfont icon-arrow-down"></text>
       </view>
-    </navigator>
-    <view class='thumbs-up fsc3' bindtap='dianZan' data-idx="{{index}}" data-hkid='{{item.hkid}}'>
-      <text class='iconfont icon-zan {{item.isLike == 1 ? "zan" : ""}}'></text> {{item.likeCount}}
+      <view class="select-wrapper" hidden="{{needFlag}}">
+        <view class="select-opt" wx:for="{{optArr}}" bindtap="tapNeed" data-id="{{item.value}}" data-cap="{{item.label}}">{{item.label}}</view>
+        <view class="select-add" bindtap="addNeed">新增需求</view>
+      </view>
+    </view>
+    <view class='bgc3 radius recommend' size='mini'>为你推荐</view>
+    <view class="filter-btn" bindtap="filter">筛选</view>
+  </view>
+  <!-- 没有数据 -->
+  <view class='nodata align-c fs99' wx:if="{{list&&list.length==0}}">
+    <text class='nodata-tips'>暂无满足您的人员提供您可修改需求发布后我们再进行匹配</text>
+    <view class='align-c'>
+      <button size='mini' class='btn-primary bgc3'>修改需求</button>
     </view>
   </view>
-  <view class='edit-wrapper' bindtap='change'>
+  <!-- 数据存在 -->
+  <view class="container {{filterFlag||'filter-sty'}}" wx:else>
+    <view class='item' wx:for="{{list}}" wx:key="index" wx:for-item="item" wx:for-index="index">
+      <navigator url='../persondetail/persondetail?username={{item.username}}&hkid={{item.hkid}}' class='item-link'>
+        <image src='{{item.headimageurl}}' class='item-img'></image>
+        <!-- <image :src='{{item.imgUrl}}' class='item-img'></image> -->
+        <view class='item-main'>
+          <view class='item-info'>
+            <text class='item-name'>{{item.name == null ? "未填写" : item.name}}</text>
+            <text class='item-other fs99'>{{item.idcard== null ? "未填写" : item.idcard}} {{item.workdate== null ? "0" : item.workdate}}年 {{item.education== null ? "未填写" : item.education}} {{item.address1== null ? "未填写" : item.address1}}</text>
+          </view>
+          <view class='item-desc fs66'>{{item.brief== null ? "未填写" : item.brief}}</view>
+        </view>
+      </navigator>
+      <view class='thumbs-up fsc3' bindtap='dianZan' data-idx="{{index}}" data-hkid='{{item.hkid}}'>
+        <text class='iconfont icon-zan {{item.isLike == 1 ? "zan" : ""}}'></text> {{item.likeCount}}
+      </view>
+    </view>
+    <!-- <view class='edit-wrapper' bindtap='change'>
     <text class='iconfont icon-edit'></text>
+  </view> -->
+  </view>
+</view>
+<!-- 筛选条件 -->
+<view class="filter-wrapper" hidden="{{filterFlag}}" bindtap="hideFilter">
+  <view class="filter" catchtap="stopBubble">
+    <view class="person-classic">
+      <view class="filter-title">人员类别</view>
+      <view class="classic-wrapper">
+        <view class="classic-item {{item.flag? 'active': ''}}" data-id="{{item.value}}" data-idx="{{index}}" bindtap="onTap1" wx:for="{{classicArr}}">{{item.label}}</view>
+      </view>
+    </view>
+    <view class="certy-level">
+      <view class="filter-title">认证类别</view>
+      <view class="level-wrapper">
+        <view class="level-item {{item.flag? 'active': ''}}" data-id="{{item.value}}" data-idx="{{index}}" bindtap="onTap2" wx:for="{{levelArr}}">{{item.label}}</view>
+      </view>
+    </view>
+    <view class="button-content">
+      <view class="btn-reset" bindtap="reset">重置</view>
+      <view class="btn-sure bgc3" bindtap="confirm">确定</view>
+    </view>
   </view>
 </view>

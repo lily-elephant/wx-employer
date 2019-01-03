@@ -10,8 +10,11 @@ page{
   background: #fff;
   border-bottom:5px solid #eee;
 }
+.video-cap{
+  font-size: 28rpx;
+  text-align: center;
+}
 .person-img{
-  flex: 0 0 100rpx;
   width: 100rpx;
   border: 4rpx solid #999;
   border-radius: 50%;
@@ -67,8 +70,7 @@ page{
   width: 100%;
 }
 .basedata{
-  padding: 0 40rpx 30rpx;
-  margin-bottom: 10rpx;
+  padding: 0 40rpx 100rpx;
   background: #fff;
   font-size: 30rpx;
   border-bottom:5px solid #eee;
@@ -225,4 +227,38 @@ page{
 }
 .textIndx{
   text-indent: 2em;
+}
+.opt-wrapper{
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  background: #fff;
+  border-top: 1px solid #c3b798;
+}
+.collect{
+  width: 20%;
+  font-size: 44rpx;
+  color: #888;
+  text-align: center;
+}
+/* 收藏状态颜色 */
+.has-collect{
+  color: #f5c16d;
+}
+.connect-interview{
+  padding: 20rpx 0;
+  width: 40%;
+  color: #fff;
+  background: #c3b798;
+}
+.apply-sign{
+  padding: 20rpx 0;
+  width: 40%;
+  color: #fff;
+  background: #f5c16d;
 }
