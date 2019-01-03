@@ -2,7 +2,12 @@
   "pages":[
     "pages/index/index",
     "pages/sign/sign",
+    "pages/signed/signed",
     "pages/me/me",
+    "pages/collect/collect",
+    "pages/myneed/myneed",
+    "pages/searchcard/searchcard",
+    "pages/connect/connect",
     "pages/aboutus/aboutus",
     "pages/feedback/feedback",
     "pages/myfeedback/myfeedback",

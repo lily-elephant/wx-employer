@@ -11,4 +11,5 @@
   border: 1px solid #eee;
   border-top: none;
   font-size: 30rpx;
+  border-radius: 8rpx;
 }

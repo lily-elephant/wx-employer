@@ -1,5 +1,4 @@
 {
-  "enablePullDownRefresh": true,
   "usingComponents": {
     "v-house": "../../component/housekeep/index",
     "v-filter": "../../component/filter/index"

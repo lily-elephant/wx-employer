@@ -1,0 +1,14 @@
+<navigator url='../persondetail/persondetail?username={{housekeep.username}}&hkid={{housekeep.hkid}}' class='item-link'>
+  <image src='{{housekeep.headimageurl}}' class='item-img'></image>
+  <slot name="signState"></slot>
+  <view class='item-main'>
+    <view class='item-info'>
+      <text class='item-name'>{{housekeep.name == null ? "未填写" : housekeep.name}}</text>
+      <text class='item-other fs99'>{{housekeep.idcard== null ? "未填写" : housekeep.idcard}} {{housekeep.workdate== null ? "0" : housekeep.workdate}}年 {{housekeep.education== null ? "未填写" : housekeep.education}} {{housekeep.address1== null ? "未填写" : housekeep.address1}}</text>
+    </view>
+    <view class='item-desc fs66'>{{housekeep.brief== null ? "未填写" : housekeep.brief}}</view>
+  </view>
+</navigator>
+<view class='thumbs-up fsc3' bindtap='dianZan' data-idx="{{index}}" data-hkid='{{housekeep.hkid}}'>
+  <text class='iconfont icon-zan {{housekeep.isLike == 1 ? "zan" : ""}}'></text> {{housekeep.likeCount}}
+</view>

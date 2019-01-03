@@ -1,0 +1,8 @@
+@import "../index/index.wxss";
+.filter-btn{
+  text-align: right;
+}
+.filter{
+  padding: 24rpx 24rpx 0;
+  display: inline-flex;
+}

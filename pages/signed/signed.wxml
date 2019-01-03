@@ -1,0 +1,13 @@
+<view class="container">
+  <view class="sign-title">签约人：</view>
+  <view class="item">
+    <v-house housekeep="{{signer}}" index="{{index}}" bind:zan="onZan" />
+  </view>
+  <view class="sign-title">签约详情：</view>
+  <view class="sign-detail">
+    <view class="row">合同期限：{{detail.period}}</view>
+    <view class="row">职位：{{detail.job}}</view>
+    <view class="row">月薪：￥{{detail.salary}}</view>
+  </view>
+  <view class="download bgc3">下载合同</view>
+</view>

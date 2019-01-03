@@ -1,0 +1,21 @@
+@import "../index/index.wxss";
+
+.sign-title{
+  padding: 24rpx 24rpx 0;
+  color: #c3b798;
+}
+.sign-detail{
+  padding: 24rpx 24rpx 90rpx;
+}
+.row{
+  padding: 0 0 24rpx;
+}
+.download{
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  padding: 20rpx 0;
+  text-align: center;
+  color: #fff;
+}

@@ -70,6 +70,24 @@ Page({
       this.login()
     }
   },
+  // 进入我的需求
+  goMyneed(){
+    wx.navigateTo({
+      url: '../myneed/myneed',
+    })
+  },
+  // 进入我联系的
+  goMyconnect(){
+    wx.navigateTo({
+      url: '../connect/connect',
+    })
+  },
+  // 进入我的收藏
+  goMycollect(){
+    wx.navigateTo({
+      url: '../collect/collect',
+    })
+  },
   // 进入我的消息
   goMyinfo: function(){
     if (wx.getStorageSync("token")) {

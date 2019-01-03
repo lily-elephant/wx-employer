@@ -1,0 +1,18 @@
+<view class="filter" catchtap="stopBubble">
+  <view class="person-classic">
+    <view class="filter-title">人员类别</view>
+    <view class="classic-wrapper">
+      <view class="classic-item {{item.flag? 'active': ''}}" data-id="{{item.value}}" data-idx="{{index}}" bindtap="onTap1" wx:for="{{classicArr}}" wx:key="index">{{item.label}}</view>
+    </view>
+  </view>
+  <view class="certy-level">
+    <view class="filter-title">认证类别</view>
+    <view class="level-wrapper">
+      <view class="level-item {{item.flag? 'active': ''}}" data-id="{{item.value}}" data-idx="{{index}}" bindtap="onTap2" wx:for="{{levelArr}}" wx:key="index">{{item.label}}</view>
+    </view>
+  </view>
+  <view class="button-content">
+    <view class="btn-reset" bindtap="reset">重置</view>
+    <view class="btn-sure bgc3" bindtap="confirm">确定</view>
+  </view>
+</view>

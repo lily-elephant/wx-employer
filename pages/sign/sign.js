@@ -1,4 +1,5 @@
 // pages/sign/sign.js
+import { getAge } from '../../utils/util.js';
 const app = getApp();
 Page({
 
@@ -13,43 +14,30 @@ Page({
   },
 
   //事件处理函数
-  dianZan: function (e) {
-    if (wx.getStorageSync('token')) {
-      var index = e.currentTarget.dataset.idx;
-      var hkid = e.currentTarget.dataset.hkid;
-      var that = this
-      wx.request({
-        url: app.globalData.url + 'source/getlike',
-        method: 'POST',
-        header: {
-          'content-type': 'application/x-www-form-urlencoded',
-          'Token': wx.getStorageSync('token')
-        },
-        data: {
-          hkid: hkid
-        },
-        success: function (res) {
-          //console.log(res.data.message)
-          if (res.data.message == '点赞成功') {
-            that.data.lists[index].isLike = '1'
-            var j = parseInt(that.data.lists[index].likeCount);
-            that.data.lists[index].likeCount = j + 1
-          } else if (res.data.message == '取消点赞成功') {
-            that.data.lists[index].isLike = '0'
-            var j = parseInt(that.data.lists[index].likeCount);
-            that.data.lists[index].likeCount = j - 1
-          }
-          that.setData({
-            list: that.data.lists
-          })
-        },
-      })
-    } else {
-      wx.navigateTo({
-        url: '../login/login',
-      })
+  // 点赞
+  onZan(e) {
+    // ps：面试列表接口暂无点赞字段2019/01/03/23:23
+    let index = e.detail.index;
+    if (e.detail.message == '点赞成功') {
+      this.data.lists[index].isLike = '1'
+      var j = parseInt(this.data.lists[index].likeCount);
+      this.data.lists[index].likeCount = j + 1
+    } else if (e.detail.message == '取消点赞成功') {
+      this.data.lists[index].isLike = '0'
+      var j = parseInt(this.data.lists[index].likeCount);
+      this.data.lists[index].likeCount = j - 1
     }
+    this.setData({
+      records: this.data.lists
+    })
   },
+  // 点击已签约
+  signed(){
+    wx.navigateTo({
+      url: '../signed/signed',
+    })
+  },
+  // 获取已签约列表
   getSignList: function () {
     var that = this
     wx.request({
@@ -65,7 +53,12 @@ Page({
           if (res.data.data != undefined) {
 
             for (var index in res.data.data) {
-              res.data.data[index].hkidcard = that.getAges(res.data.data[index].hkidcard)
+              // start 数据字段名不一致，为保证子组件通用而写
+              res.data.data[index].name = res.data.data[index].hkname
+              res.data.data[index].idcard = getAge(res.data.data[index].hkidcard)
+              // end 数据字段名不一致，为保证子组件通用而写
+              // 如果字段名称一致，写法如下
+              // res.data.data[index].hkidcard = getAge(res.data.data[index].hkidcard)
               if (res.data.data[index].headimageurl != null) {
                 res.data.data[index].headimageurl = that.data.globalimgeurl + res.data.data[index].headimageurl
               } else {
@@ -162,30 +155,30 @@ Page({
   onShareAppMessage: function () {
 
   },
-  getAges: function (identityCard) {
-    var len = (identityCard + "").length;
-    if (len == 0) {
-      return 0;
-    } else {
-      if ((len != 15) && (len != 18)) {
-        return 0;
-      }
-    }
-    var strBirthday = "";
-    if (len == 18) {
-      strBirthday = identityCard.substr(6, 4) + "/" + identityCard.substr(10, 2) + "/" + identityCard.substr(12, 2);
-    }
-    if (len == 15) {
-      strBirthday = "19" + identityCard.substr(6, 2) + "/" + identityCard.substr(8, 2) + "/" + identityCard.substr(10, 2);
-    }
-    //时间字符串里，必须是“/”
-    var birthDate = new Date(strBirthday);
-    var nowDateTime = new Date();
-    var age = nowDateTime.getFullYear() - birthDate.getFullYear();
-    //再考虑月、天的因素;.getMonth()获取的是从0开始的，这里进行比较，不需要加1
-    if (nowDateTime.getMonth() < birthDate.getMonth() || (nowDateTime.getMonth() == birthDate.getMonth() && nowDateTime.getDate() < birthDate.getDate())) {
-      age--;
-    }
-    return age;
-  }
+  // getAges: function (identityCard) {
+  //   var len = (identityCard + "").length;
+  //   if (len == 0) {
+  //     return 0;
+  //   } else {
+  //     if ((len != 15) && (len != 18)) {
+  //       return 0;
+  //     }
+  //   }
+  //   var strBirthday = "";
+  //   if (len == 18) {
+  //     strBirthday = identityCard.substr(6, 4) + "/" + identityCard.substr(10, 2) + "/" + identityCard.substr(12, 2);
+  //   }
+  //   if (len == 15) {
+  //     strBirthday = "19" + identityCard.substr(6, 2) + "/" + identityCard.substr(8, 2) + "/" + identityCard.substr(10, 2);
+  //   }
+  //   //时间字符串里，必须是“/”
+  //   var birthDate = new Date(strBirthday);
+  //   var nowDateTime = new Date();
+  //   var age = nowDateTime.getFullYear() - birthDate.getFullYear();
+  //   //再考虑月、天的因素;.getMonth()获取的是从0开始的，这里进行比较，不需要加1
+  //   if (nowDateTime.getMonth() < birthDate.getMonth() || (nowDateTime.getMonth() == birthDate.getMonth() && nowDateTime.getDate() < birthDate.getDate())) {
+  //     age--;
+  //   }
+  //   return age;
+  // }
 })

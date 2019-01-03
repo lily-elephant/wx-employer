@@ -1,5 +1,5 @@
 //index.js
-//获取应用实例
+import { getAge } from '../../utils/util.js';
 const app = getApp()
 
 Page({
@@ -20,23 +20,7 @@ Page({
       { label: '需求1', value: 'n1' },
       { label: '需求2', value: 'n1' },      
     ], //已有需求
-    //人员类别
-    classicArr: [
-      { label: '保姆', value: 'c1' },
-      { label: '月嫂', value: 'c2' },
-      { label: '管家', value: 'c3' },
-      { label: '育儿嫂', value: 'c4' },
-      { label: '司机', value: 'c5' },
-    ],
-    // 认证级别
-    levelArr: [
-      { label: 'B1', value: 'l1' },
-      { label: 'B2', value: 'l2' },
-      { label: 'B3', value: 'l3' },
-      { label: 'B4', value: 'l4' },
-      { label: 'B5', value: 'l5' },
-      { label: 'B6', value: 'l6' },      
-    ],
+    
   },
   /**
    * v2版本事件
@@ -53,54 +37,16 @@ Page({
       filterFlag: true
     })
   },
-  // 阻止冒泡
-  stopBubble(){},
-  // 点击筛选条件人员类别
-  onTap1(e){
-    let ev = e.currentTarget.dataset;
-    this.data.classicArr.forEach((item, index) => {
-      if(ev.idx == index){
-        item.flag = !item.flag
-      }
-    })
-    this.setData({
-      classicArr: this.data.classicArr
-    })
-  },
-  // 点击筛选条件认证类别
-  onTap2(e) {
-    let ev = e.currentTarget.dataset;
-    this.data.levelArr.forEach((item, index) => {
-      if (ev.idx == index) {
-        item.flag = !item.flag
-      }
-    })
-    this.setData({
-      levelArr: this.data.levelArr
-    })
-  },
-  // 重置筛选条件
-  reset(){
-    this.data.levelArr.forEach((item) => {
-      item.flag = false
-    })
-    this.data.classicArr.forEach((item) => {
-      item.flag = false
-    })
-    this.setData({
-      classicArr: this.data.classicArr,
-      levelArr: this.data.levelArr
-    })
-  },
   // 确认筛选条件
-  confirm(){
+  sure(e){
+    console.log(e)
     this.setData({
       filterFlag: true
     })
   },
   // 新增需求
   addNeed(){
-
+    
   },
   // 点击具体需求
   tapNeed(e){
@@ -116,43 +62,22 @@ Page({
       needFlag: !this.data.needFlag
     })
   },
-  //事件处理函数
-  dianZan: function(e){
-    if(wx.getStorageSync('token')){
-      var index = e.currentTarget.dataset.idx;
-      var hkid = e.currentTarget.dataset.hkid;
-      var that = this
-      wx.request({
-        url: app.globalData.url + 'source/getlike',
-        method: 'POST',
-        header: {
-          'content-type': 'application/x-www-form-urlencoded',
-          'Token': wx.getStorageSync('token')
-        },
-        data: {
-          hkid: hkid
-        },
-        success: function (res) {
-          //console.log(res.data.message)
-          if (res.data.message == '点赞成功'){
-            that.data.lists[index].isLike = '1'
-            var j = parseInt(that.data.lists[index].likeCount);
-            that.data.lists[index].likeCount = j + 1
-          } else if (res.data.message == '取消点赞成功'){
-            that.data.lists[index].isLike = '0'
-            var j = parseInt(that.data.lists[index].likeCount);
-            that.data.lists[index].likeCount = j - 1
-          }
-          that.setData({
-            list: that.data.lists
-          })
-        },
-      })
-    }else{
-      wx.navigateTo({
-        url: '../login/login',
-      })
-    }   
+  // 点赞
+  onZan(e){
+    console.log(e)
+    let index = e.detail.index;
+    if (e.detail.message == '点赞成功') {
+      this.data.lists[index].isLike = '1'
+      var j = parseInt(this.data.lists[index].likeCount);
+      this.data.lists[index].likeCount = j + 1
+    } else if (e.detail.message == '取消点赞成功') {
+      this.data.lists[index].isLike = '0'
+      var j = parseInt(this.data.lists[index].likeCount);
+      this.data.lists[index].likeCount = j - 1
+    }
+    this.setData({
+      list: this.data.lists
+    })
   },
   /**
    * 修改需求，state为1修改需求提交后进入首页
@@ -197,7 +122,7 @@ Page({
         //console.log(res.data.data[0])
         if (res.data.data != undefined){
           for (var index in res.data.data) {
-            res.data.data[index].idcard = that.getAges(res.data.data[index].idcard)
+            res.data.data[index].idcard = getAge(res.data.data[index].idcard)
             if (res.data.data[index].headimageurl != null) {
               res.data.data[index].headimageurl = that.data.globalimgeurl + res.data.data[index].headimageurl
             } else {
@@ -287,30 +212,5 @@ Page({
     this.data.startpage += 1 
     this.getHousekeeperList()
   },
-  getAges: function (identityCard){
-    var len = (identityCard + "").length;
-    if(len == 0) {
-      return 0;
-    } else {
-      if((len != 15) && (len != 18)){
-        return 0;
-      }
-    }
-    var strBirthday = "";
-    if (len == 18){
-      strBirthday = identityCard.substr(6, 4) + "/" + identityCard.substr(10, 2) + "/" + identityCard.substr(12, 2);
-    }
-    if (len == 15) {
-      strBirthday = "19" + identityCard.substr(6, 2) + "/" + identityCard.substr(8, 2) + "/" + identityCard.substr(10, 2);
-    }
-    //时间字符串里，必须是“/”
-    var birthDate = new Date(strBirthday);
-    var nowDateTime = new Date();
-    var age = nowDateTime.getFullYear() - birthDate.getFullYear();
-    //再考虑月、天的因素;.getMonth()获取的是从0开始的，这里进行比较，不需要加1
-    if (nowDateTime.getMonth() < birthDate.getMonth() || (nowDateTime.getMonth() == birthDate.getMonth() && nowDateTime.getDate() < birthDate.getDate())) {
-      age--;
-    }
-    return age;
-  }
+  
 })

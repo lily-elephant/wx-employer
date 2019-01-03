@@ -1,0 +1,17 @@
+<view class="container">
+  <view class="filter-btn"><text class="filter" bindtap="filter">筛选</text></view>
+  <!-- 没有数据 -->
+  <view class='nodata align-c fs99' wx:if="{{!list||list.length==0}}">
+    <text class='nodata-tips'>暂无数据</text>
+  </view>
+  <!-- 数据存在 -->
+  <view class="container">
+    <view class='item' wx:for="{{list}}" wx:key="index">
+      <v-house housekeep="{{item}}" index="{{index}}" bind:zan="onZan" />
+    </view>
+  </view>
+</view>
+<!-- 筛选条件 -->
+<view class="filter-wrapper" hidden="{{filterFlag}}" bindtap="hideFilter">
+  <v-filter bind:sure="sure" />
+</view>

@@ -1,0 +1,46 @@
+/* component/filter/index.wxss */
+@import "../../app.wxss";
+.filter{
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background: #fff;
+}
+.certy-level{
+  border-top: 1px solid #eee;
+}
+.classic-wrapper, .level-wrapper{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  padding: 24rpx;
+}
+.active{
+  color: #c3b798;
+}
+.filter-title{
+  padding: 24rpx 24rpx 0;
+}
+.classic-item, .level-item{
+  padding: 0 10rpx 0;
+  margin: 0 10rpx 10rpx;
+  line-height: 1;
+}
+.button-content{
+  display: flex;
+  flex-direction: row;
+  text-align: center;
+}
+.btn-reset, .btn-sure{
+  padding: 20rpx 0;
+}
+.btn-reset{
+  width: 50%;
+  background: #f9f9f9;
+  color: #f5c16d;
+}
+.btn-sure{
+  width: 50%;
+  color: #fff;
+}

@@ -13,7 +13,15 @@
 <view class='me-list'>
   <view class='row'>
     <text class='iconfont row-l icon-orders fsc3'></text>
-    <view class='caption bordbd9' bindtap='goMyorder'>我的合同<text class='iconfont icon-arrow-right fs99 f-right'></text></view>
+    <view class='caption bordbd9' bindtap='goMyneed'>我的需求<text class='iconfont icon-arrow-right fs99 f-right'></text></view>
+  </view>
+  <view class='row'>
+    <text class='iconfont row-l icon-orders fsc3'></text>
+    <view class='caption bordbd9' bindtap='goMyconnect'>我联系的<text class='iconfont icon-arrow-right fs99 f-right'></text></view>
+  </view>
+  <view class='row'>
+    <text class='iconfont row-l icon-star fsc3'></text>
+    <view class='caption bordbd9' bindtap='goMycollect'>我的收藏<text class='iconfont icon-arrow-right fs99 f-right'></text></view>
   </view>
   <view class='row'>
     <text class='iconfont row-l icon-email fsc3'></text>
