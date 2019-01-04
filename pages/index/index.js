@@ -1,6 +1,9 @@
 //index.js
 import { getAge } from '../../utils/util.js';
+import { ListModel } from '../../models/list.js'
+import {errorok} from '../../config.js'
 const app = getApp()
+const listModel = new ListModel()
 
 Page({
   data: {
@@ -15,16 +18,40 @@ Page({
     globalimgeurl: app.globalData.imgeurl,
     filterFlag: true, // 筛选条件显示与否
     needFlag: true, // 需求下拉显示与否
-    captionNeed: '需求1', //展示的需求文字
-    optArr: [
-      { label: '需求1', value: 'n1' },
-      { label: '需求2', value: 'n1' },      
-    ], //已有需求
+    captionNeed: '', //展示的需求文字
+    optArr: [], //已有需求
     
   },
   /**
    * v2版本事件
    * */ 
+  // 获取首页需求列表
+  _getHasNeeds(username){
+    listModel.getHasNeeds(username).then(res => {
+      if(res.data.code == errorok){
+        if(!res.data.data) {res.data.data = []}
+        this.setData({
+          optArr: res.data.data,
+          captionNeed: res.data.data[0].name || ''
+        })
+      }
+    })
+  },
+  // 获取权限username
+  getNeeds() {
+    listModel.getAuth().then(res => {
+      if (res.data.code == errorok) {
+        wx.setStorageSync('username', res.data.data.username)
+        let username = wx.getStorageSync('username')
+        this._getHasNeeds(username);
+      } else {
+        wx.showToast({
+          title: res.data.message,
+          icon: "none"
+        })
+      }
+    })
+  },
   // 点击筛选
   filter(){
     this.setData({
@@ -51,9 +78,13 @@ Page({
   // 点击具体需求
   tapNeed(e){
     let cap = e.currentTarget.dataset.cap;
+    let ccid = e.currentTarget.dataset.id;
     this.setData({
       captionNeed: cap,
       needFlag: true
+    })
+    wx.navigateTo({
+      url: '../editneed/editneed?ccid='+ccid,
     })
   },
   // 点击需求文字
@@ -92,10 +123,7 @@ Page({
     })
   },
   onLoad: function () {
-    //获取banner
     this.getBanner()
-    //获取匹配的家政人员
-    this.getHousekeeperList()
   },
   getHousekeeperList:function(){
     var that = this
@@ -186,14 +214,15 @@ Page({
     }
     //console.log(e.currentTarget.dataset.data)
   },
+  
   onShow: function () {
+    this.getNeeds(); // 获取我的需求
+    //获取匹配的家政人员
+    this.getHousekeeperList();
     if(!wx.getStorageSync('isSee')){
-        // wx.navigateTo({
-        //   url: '../knowledge/knowledge',
-        // })
-        wx.redirectTo({
-          url: '../knowledge/knowledge',
-        })
+      wx.redirectTo({
+        url: '../knowledge/knowledge',
+      })
     }
   },
   /**
@@ -202,7 +231,7 @@ Page({
   onPullDownRefresh: function () {
     this.data.startpage = 1
     this.data.lists = []
-    this.onLoad()
+    this.getHousekeeperList()
   },
 
   /**

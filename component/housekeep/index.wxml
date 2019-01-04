@@ -4,11 +4,11 @@
   <view class='item-main'>
     <view class='item-info'>
       <text class='item-name'>{{housekeep.name == null ? "未填写" : housekeep.name}}</text>
-      <text class='item-other fs99'>{{housekeep.idcard== null ? "未填写" : housekeep.idcard}} {{housekeep.workdate== null ? "0" : housekeep.workdate}}年 {{housekeep.education== null ? "未填写" : housekeep.education}} {{housekeep.address1== null ? "未填写" : housekeep.address1}}</text>
+      <text class='item-other fs99'>{{housekeep.idcard=="null" ||!housekeep.idcard ? "未填写" : housekeep.idcard}} {{housekeep.workdate== "null"||!housekeep.workdate ? "0" : housekeep.workdate}}年 {{housekeep.education== "null"||!housekeep.education ? "未填写" : housekeep.education}} {{housekeep.address1== "null"||!housekeep.address1 ? "未填写" : housekeep.address1}}</text>
     </view>
-    <view class='item-desc fs66'>{{housekeep.brief== null ? "未填写" : housekeep.brief}}</view>
+    <view class='item-desc fs66'>{{housekeep.brief== "null"||!housekeep.brief ? "未填写" : housekeep.brief}}</view>
   </view>
 </navigator>
-<view class='thumbs-up fsc3' bindtap='dianZan' data-idx="{{index}}" data-hkid='{{housekeep.hkid}}'>
+<view class='thumbs-up fsc3' bindtap='dianZan' data-idx="{{index}}" data-hkid='{{housekeep.hkid}}' hidden="{{zanFlag}}">
   <text class='iconfont icon-zan {{housekeep.isLike == 1 ? "zan" : ""}}'></text> {{housekeep.likeCount}}
 </view>

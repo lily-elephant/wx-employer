@@ -16,7 +16,7 @@
       <text class="iconfont icon-arrow-down"></text>
       </view>
       <view class="select-wrapper" hidden="{{needFlag}}">
-        <view class="select-opt" wx:for="{{optArr}}" bindtap="tapNeed" data-id="{{item.value}}" data-cap="{{item.label}}" wx:key="index">{{item.label}}</view>
+        <view class="select-opt" wx:for="{{optArr}}" bindtap="tapNeed" data-id="{{item.ccid}}" data-cap="{{item.name}}" wx:key="index">{{item.name}}</view>
         <view class="select-add" bindtap="addNeed">新增需求</view>
       </view>
     </view>
@@ -39,5 +39,5 @@
 </view>
 <!-- 筛选条件 -->
 <view class="filter-wrapper" hidden="{{filterFlag}}" bindtap="hideFilter">
-  <v-filter bind:sure="sure" />
+  <v-filter bind:sure="sure" level-flag="{{true}}" />
 </view>

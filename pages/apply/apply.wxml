@@ -1,0 +1,18 @@
+<view class="container">
+  <view class="sign-title">待签约人：</view>
+  <view class="item">
+    <v-house housekeep="{{signer}}" index="{{index}}" bind:zan="onZan" />
+  </view>
+  <view class="sign-title">签约须知：</view>
+  <view class="sign-know">
+    <view class="row">1.******</view>
+    <view class="row">2.******</view>
+    <view class="row">3.******</view>
+  </view>
+  <checkbox-group bindchange="check">
+    <label class="checkbox">
+      <checkbox value="{{agree}}" checked="{{true}}" /> 同意要管家签约条款
+    </label>
+  </checkbox-group>
+  <view class="download bgc3 {{val==0 && 'disabled'}}" bindtap="apply">申请签约</view>
+</view>

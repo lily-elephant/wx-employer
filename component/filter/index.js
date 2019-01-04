@@ -1,10 +1,18 @@
 // component/filter/index.js
+import { ListModel } from '../../models/list.js'
+import { errorok } from '../../config.js'
+const listModel = new ListModel()
+
 Component({
+  externalClasses: ['por'],//可以传入多个class
   /**
    * 组件的属性列表
    */
   properties: {
-
+    levelFlag: {
+      type: Boolean,
+      value: false
+    }
   },
 
   /**
@@ -12,13 +20,7 @@ Component({
    */
   data: {
     //人员类别
-    classicArr: [
-      { label: '保姆', value: 'c1' },
-      { label: '月嫂', value: 'c2' },
-      { label: '管家', value: 'c3' },
-      { label: '育儿嫂', value: 'c4' },
-      { label: '司机', value: 'c5' },
-    ],
+    classicArr: [],
     // 认证级别
     levelArr: [
       { label: 'B1', value: 'l1' },
@@ -29,11 +31,32 @@ Component({
       { label: 'B6', value: 'l6' },
     ],
   },
-
+  lifetimes: {
+    // 生命周期函数，可以为函数，或一个在methods段中定义的方法名
+    attached() {
+      this._getClassicList();
+    },
+    moved() { },
+    detached() { },
+  },
+  // 此处attached的声明会被lifetimes字段中的声明覆盖
+  attached() { 
+    console.log(2)
+  },
   /**
    * 组件的方法列表
    */
   methods: {
+    // 获取人员类别列表
+    _getClassicList() {
+      listModel.getClassicList().then(res => {
+        if (res.data.code == errorok){
+          this.setData({
+            classicArr: res.data.data
+          })
+        }
+      })
+    },
     // 阻止冒泡
     stopBubble(){},
     // 点击筛选条件人员类别
@@ -78,12 +101,12 @@ Component({
       let res = [];
       this.data.levelArr.forEach((item) => {
         if (item.flag == true) {
-          res.push(item.value)
+          res.push(item.ccid)
         }
       })
       this.data.classicArr.forEach((item) => {
         if (item.flag == true) {
-          res.push(item.value)
+          res.push(item.ccid)
         }
       })
       // 把筛选条件结果传递给主页面

@@ -1,1 +1,35 @@
-/* pages/myneed/myneed.wxss */
+.container{
+  padding: 24rpx 0;
+  color: #333;
+}
+.item, .add{
+  display: inline-flex;
+  flex-direction: column;
+  vertical-align: top;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20rpx;
+  margin: 0 2% 20rpx;
+  width: 29%;
+  height: 200rpx;
+  box-sizing: border-box;
+  border: 1px solid #eee;
+}
+.card-state{
+  padding: 0 6rpx;
+  border: 1px solid #f5c16d;
+  border-radius: 2px;
+  font-size: 26rpx;
+  color: #f5c16d;
+}
+.not{
+  color: #c3b798;
+  border: 1px solid #c3b798;
+}
+.add{
+  justify-content: space-around;
+}
+.add-icon{
+  line-height: 1;
+  font-size: 48rpx;
+}

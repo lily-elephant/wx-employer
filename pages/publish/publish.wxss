@@ -40,6 +40,13 @@
 .btn-wrapper{
   padding: 40rpx 0;
 }
+.por{
+  position: relative!important;
+}
+.filter-title{
+  padding: 24rpx;
+  text-align: center;
+}
 /* .btn-wrapper{
   position: absolute;
   bottom: 60rpx;

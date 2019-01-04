@@ -1,0 +1,15 @@
+/* pages/apply/apply.wxss */
+@import "../signed/signed.wxss";
+.sign-know{
+  padding: 24rpx;
+}
+.checkbox{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 24rpx;
+  border-top: 10rpx solid #f9f9f9;
+}
+.disabled{
+  background: #ccc;
+}

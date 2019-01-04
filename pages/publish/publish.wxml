@@ -1,4 +1,8 @@
-<view class='container'>
+<view class="filter-content" hidden="{{showFlag}}">
+  <view class="filter-title">请选择家政人员类别</view>
+  <v-filter por="por" level-flag="{{true}}" bind:sure="sure" />
+</view>
+<view class='container' hidden="{{!showFlag}}">
   <view wx:for="{{questions}}" wx:key='index'>
     <text class='question fs66'>{{index+1}}）、{{item.name}}</text>
     <checkbox-group wx:if="{{item.examtype == 'MULTIPLE'}}" class="radio-group" bindchange="checkboxChange" data-eid='{{item.eid}}' >

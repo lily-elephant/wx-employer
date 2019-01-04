@@ -1,1 +1,29 @@
-/* pages/searchcard/searchcard.wxss */
+@import "../editneed/editneed.wxss";
+
+.container{
+  padding: 24rpx 24rpx 90rpx;
+}
+.radio-group{
+  display: flex;
+  flex-direction: row;
+  padding: 0 0 24rpx;
+}
+.radio{
+  display: inline-flex;
+  flex-direction: row;
+  align-items: center;
+  width: 50%;
+}
+.tips{
+  color: #f00;
+  font-size: 28rpx;
+}
+.buy{
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 20rpx 0;
+  text-align: center;
+  color: #fff;
+}

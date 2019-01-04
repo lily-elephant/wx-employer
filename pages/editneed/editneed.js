@@ -1,4 +1,8 @@
-var app = getApp()
+import { ListModel } from '../../models/list.js'
+import { errorok } from '../../config.js'
+const app = getApp()
+const listModel = new ListModel()
+
 Page({
   data: {
     answerList: []
@@ -72,42 +76,21 @@ Page({
       })
     }
   },
+  // 根据类别获取need
+  getNeedByClassic(ccid){
+    listModel.getNeedListByClassic(ccid).then(res => {
+      if(res.data.code == errorok){
+        if (!res.data.data) { res.data.data = []}
+        this.setData({
+          questions: res.data.data,
+        })
+      }
+    })
+  },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    var that = this
-    wx.request({
-      url: app.globalData.url + 'exam/baseExamlist',
-      method: 'POST',
-      header: {
-        'content-type': 'application/x-www-form-urlencoded',
-        'Token': wx.getStorageSync('token')
-      },
-      success: function (res) {
-        //console.log(res.data)
-        if(res.data.data != null){
-          if (res.data.data.length != 0) {
-            that.setData({
-              questions: res.data.data,
-            })
-          } else {
-            wx.showToast({
-              title: '暂无数据',
-              icon: 'none',
-              duration: 2000
-            })
-
-          }
-        }else{
-          wx.showToast({
-            title: '暂无数据',
-            icon: 'none',
-            duration: 2000
-          })
-        }
-        
-      }
-    })
+    this.getNeedByClassic(options.ccid)
   }
 })

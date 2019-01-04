@@ -10,7 +10,11 @@ Component({
   },
   properties: {
     housekeep: Object,
-    index: Number
+    index: Number,
+    zanFlag: {
+      type: Boolean,
+      value: false
+    }
   },
 
   /**

@@ -1,5 +1,8 @@
 import { getAge } from '../../utils/util.js';
+import { ListModel } from '../../models/list.js'
+import { errorok } from '../../config.js'
 const app = getApp()
+const listModel = new ListModel()
 Page({
 
   /**
@@ -50,51 +53,21 @@ Page({
     })
   },
   // 获取列表数据
-  getHousekeeperList: function () {
-    var that = this
-    var headers
-    if (wx.getStorageSync('token')) {
-      headers = {
-        'content-type': 'application/x-www-form-urlencoded',
-        'Token': wx.getStorageSync('token')
-      }
-    } else {
-      headers = { 'content-type': 'application/x-www-form-urlencoded' }
-    }
-    wx.request({
-      url: app.globalData.url + 'housekeeper/matchhousekeeperlist',
-      method: 'POST',
-      header: headers,
-      data: {
-        //product: 'EMPLOYER',
-        pageindex: that.data.startpage,
-        pagecount: that.data.pageCount,
-        matchcount: 0
-      },
-      success: function (res) {
-        //console.log(res.data.data[0])
-        if (res.data.data != undefined) {
-          for (var index in res.data.data) {
-            res.data.data[index].idcard = getAge(res.data.data[index].idcard)
-            if (res.data.data[index].headimageurl != null) {
-              res.data.data[index].headimageurl = that.data.globalimgeurl + res.data.data[index].headimageurl
-            } else {
-              res.data.data[index].headimageurl = '../../asset/img/avatar.png'
-            }
+  _getCollectList(){
+    let username = wx.getStorageSync('username')
+    listModel.getCollectList(username).then(res => {
+      if(res.data.code == errorok){
+        for (var index in res.data.data) {
+          res.data.data[index].idcard = getAge(res.data.data[index].idcard)
+          if (res.data.data[index].headimageurl != null) {
+            res.data.data[index].headimageurl = this.data.globalimgeurl + res.data.data[index].headimageurl
+          } else {
+            res.data.data[index].headimageurl = '../../asset/img/avatar.png'
           }
-          var list = res.data.data;
-          that.data.lists = that.data.lists.concat(list)
-          that.setData({
-            list: that.data.lists
-          })
-        } else {
-          wx.showToast({
-            title: '没有更多数据',
-          })
         }
-      },
-      complete: function (res) {
-        wx.stopPullDownRefresh();
+        this.setData({
+          list: res.data.data
+        })
       }
     })
   },
@@ -102,7 +75,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    this.getHousekeeperList()
+    
   },
 
   /**
@@ -116,7 +89,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    this._getCollectList()
   },
 
   /**
@@ -137,17 +110,14 @@ Page({
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function () {
-    this.data.startpage = 1
-    this.data.lists = []
-    this.onLoad()
+    
   },
 
   /**
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: function () {
-    this.data.startpage += 1
-    this.getHousekeeperList()
+    
   },
 
   /**

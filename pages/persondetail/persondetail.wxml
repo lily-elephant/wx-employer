@@ -33,11 +33,11 @@
       <view class='row'>
         <text class='f-left fs66'>最高学历</text>{{person.education == null ? "未填写" : person.education}}</view>
 
-        <view class='row'>
+      <view class='row'>
         <text class='f-left fs66'>婚育状况</text>{{person.marry == null ? "未填写" : person.marry}}</view>
-        <view class='row'>
+      <view class='row'>
         <text class='f-left fs66'>有无驾照</text>{{person.isdrive == null ? "未填写" : person.isdrive}}</view>
-        <view class='row'>
+      <view class='row'>
         <text class='f-left fs66'>现居住地</text>{{person.nativeplace == null ? "未填写" : person.nativeplace}}</view>
 
       <view class='row'>
@@ -83,12 +83,7 @@
         <button class='btn-primary bgc3' size='mini' bindtap='goInterview' data-hkid='{{person.hkid}}'>发起面试</button>
       </view>
     </view> -->
-    <!-- v2版本 -->
-    <view class="opt-wrapper">
-      <view class="collect iconfont icon-star {{collectFlag ? 'has-collect': ''}}" bindtap="collect"></view>
-      <view class="connect-interview align-c" data-hkid='{{person.hkid}}' bindtap="goInterview">联系面试</view>
-      <view class="apply-sign align-c" bindtap="apply">申请签约</view>
-    </view>
+
   </view>
   <view class='tabs-content' hidden='{{currentTab!=1}}'>
     <view wx:if="{{certificatelist&&certificatelist.length==0}}" class='align-c fs99 gap-40 gap-350'>暂未获得任何证书</view>
@@ -107,7 +102,7 @@
   </view>
   <!--征信结果展示-->
   <view class='tabs-content padd40' hidden='{{currentTab!=2}}'>
-    <view wx:if="{{auth_time == null }}" class='align-c fs99 gap-40 gap-350'>暂无数据</view>
+    <view wx:if="{{!auth_time }}" class='align-c fs99 gap-40 gap-350'>暂无数据</view>
 
     <view wx:else class='credit'>
       <!--1、身份证验证-->
@@ -155,5 +150,24 @@
         {{item.des}}: {{item.count}}
       </view>
     </view>
+  </view>
+</view>
+<!-- 底部操作项 -->
+<view class="opt-wrapper">
+  <view class="collect iconfont icon-star {{collectFlag==1 ? 'has-collect': ''}}" bindtap="collect"></view>
+  <view class="connect-interview align-c" data-hkid='{{person.hkid}}' bindtap="connect">联系面试</view>
+  <view class="apply-sign align-c" bindtap="apply">申请签约</view>
+</view>
+<!-- 联系面试弹窗 -->
+<view class="connect-layer" hidden="{{connectFlag}}" bindtap="close">
+  <view class="connect-wrapper" catchtap="stopBubble">
+    <view class="iconfont icon-close" bindtap="close"></view>
+    <view class="remain-count">剩余{{count}}次</view>
+    <view class="connect-btn">
+      <view class="buy bgc3" bindtap="buyCard">购买查询卡</view>
+      <view class="tap-phone {{tapFlag||'disabled'}}" bindtap="onPhone">{{phoneText}}</view>
+    </view>
+    <view class="connect-desc">1.只有购买了查询卡，并且查询卡剩余次数大于0的情况下才可查看</view>
+    <view class="connect-desc">2.同一人员联系方式，多次查看，只消耗1次查看机会</view>
   </view>
 </view>

@@ -50,6 +50,9 @@ page{
 .tabs-header-con{
   display: flex;
 }
+.tab-box{
+  padding: 0 0 100rpx;
+}
 .tabs-item{
   flex: 1;
   line-height: 86rpx;
@@ -70,7 +73,7 @@ page{
   width: 100%;
 }
 .basedata{
-  padding: 0 40rpx 100rpx;
+  padding: 0 40rpx 30rpx;
   background: #fff;
   font-size: 30rpx;
   border-bottom:5px solid #eee;
@@ -261,4 +264,58 @@ page{
   width: 40%;
   color: #fff;
   background: #f5c16d;
+}
+.connect-layer{
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(0, 0, 0, 0.4);
+}
+.connect-wrapper{
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  padding: 24rpx 20rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: #fff;
+  color: #333;
+}
+.connect-wrapper .icon-close{
+  padding: 10rpx;
+  position: absolute;
+  right: 6rpx;
+  top: 4rpx;
+  color: #999;
+  font-size: 44rpx;
+}
+.connect-btn{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  margin: 30rpx 0;
+  width: 100%;
+}
+.tap-phone,.buy{
+  padding: 10rpx 0;
+  border-radius: 4px;
+  color: #fff;
+  width: 40%;
+  text-align: center;
+}
+.tap-phone{
+  background: #f5c16d;
+}
+.disabled{
+  background: #ccc;
+}
+.connect-desc{
+  padding: 6rpx 0;
+  width: 100%;
+  font-size: 24rpx;
+  color: #666;
 }

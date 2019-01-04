@@ -1,2 +1,11 @@
-<!--pages/myneed/myneed.wxml-->
-<text>pages/myneed/myneed.wxml</text>
+<view class="container">
+  <view wx:for="{{list}}" class="item" bindtap="edit">
+    <view class="title">{{item.title}}</view>
+    <view class="card-state" wx:if="{{item.buy==1}}">已购查询卡</view>
+    <view class="card-state not" wx:else>未购查询卡</view>
+  </view>
+  <view class="add" bindtap="addNeed">
+    <view class="add-icon">+</view>
+    <view class="">新增需求</view>
+  </view>
+</view>

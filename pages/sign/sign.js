@@ -1,6 +1,9 @@
 // pages/sign/sign.js
+import { ListModel } from '../../models/list.js'
+import { errorok } from '../../config.js'
 import { getAge } from '../../utils/util.js';
 const app = getApp();
+const listModel = new ListModel();
 Page({
 
   /**
@@ -38,6 +41,18 @@ Page({
     })
   },
   // 获取已签约列表
+  _getSignList(){
+    let username = wx.getStorageSync('username')
+    listModel.getSignList(username).then(res => {
+      if(res.data.code == errorok) {
+        console.log(res.data.data)
+        if(!res.data.data){res.data.data=[]}
+        this.setData({
+          records: res.data.data
+        })
+      }
+    })
+  },
   getSignList: function () {
     var that = this
     wx.request({
@@ -103,7 +118,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    this.getSignList()
+    
   },
 
   /**
@@ -117,7 +132,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    this._getSignList()
   },
 
   /**

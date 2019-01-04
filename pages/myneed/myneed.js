@@ -5,9 +5,28 @@ Page({
    * 页面的初始数据
    */
   data: {
-
+    list: [
+      {title: '我的需求1',buy: 1},
+      {title: '我的需求1',buy: 0},
+      { title: '我的需求1', buy: 1 },
+      { title: '我的需求1', buy: 0 },    ],
+    
   },
-
+  /**
+   * 事件处理函数
+   */ 
+  // 编辑我的需求
+  edit(){
+    wx.navigateTo({
+      url: '../searchcard/searchcard',
+    })
+  },
+  // 新增需求
+  addNeed(){
+    wx.navigateTo({
+      url: '../publish/publish',
+    })
+  },
   /**
    * 生命周期函数--监听页面加载
    */

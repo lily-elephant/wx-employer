@@ -1,7 +1,24 @@
 var app = getApp()
+
 Page({
   data: {
-    answerList: []
+    answerList: [],
+    showFlag: false,
+  },
+  //点击确定 
+  sure(e){
+    if (e.detail.val.length == 0){
+      wx.showToast({
+        title: '请选择人员类别',
+        icon: 'none'
+      })
+      return
+    }
+    this.data.ids = e.detail.val.join(',')
+    this.setData({
+      showFlag: true
+    })
+    this.getQuesList()
   },
   /**
    * 选择答案
@@ -42,11 +59,9 @@ Page({
       url: '../match/match',
     })
   },
-  /**
-   * 生命周期函数--监听页面加载
-   */
-  onLoad: function (options) {
-    var that = this 
+  // 获取题目
+  getQuesList(){
+    var that = this
     wx.request({
       url: app.globalData.url + 'exam/baseExamlist',
       method: 'POST',
@@ -55,13 +70,13 @@ Page({
         'Token': wx.getStorageSync('token')
       },
       data: {
+        ccid: this.data.ids
         //name: '试题1', //课程模块
         //ccid: 1, //课程名称
         //ismust: 1 //是否必学
       },
       success: function (res) {
-        console.log(res.data)
-        if(res.data.data != null){
+        if (res.data.data != null) {
           if (res.data.data.length != 0) {
             that.setData({
               questions: res.data.data,
@@ -73,7 +88,7 @@ Page({
               duration: 2000
             })
           }
-        }else{
+        } else {
           wx.showToast({
             title: '暂无数据',
             icon: 'none',
@@ -82,5 +97,13 @@ Page({
         }
       }
     }) 
+  },
+  /**
+   * 生命周期函数--监听页面加载
+   */
+  
+  onLoad: function (options) {
+    
+    // this.getQuesList()
   }
 })

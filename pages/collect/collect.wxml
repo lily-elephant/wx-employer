@@ -7,7 +7,7 @@
   <!-- 数据存在 -->
   <view class="container">
     <view class='item' wx:for="{{list}}" wx:key="index">
-      <v-house housekeep="{{item}}" index="{{index}}" bind:zan="onZan" />
+      <v-house housekeep="{{item}}" index="{{index}}" zan-flag="{{true}}" bind:zan="onZan" />
     </view>
   </view>
 </view>
