@@ -4,7 +4,7 @@
 <!-- 数据存在 -->
 <view class="container" wx:else>
   <view class='item' wx:for="{{records}}" wx:key="index">
-  <v-house housekeep="{{item}}" index="{{index}}" bind:zan="onZan">
+  <v-house housekeep="{{item}}" index="{{index}}" bind:zan="onZan" zan-flag="{{true}}">
     <view class="sign-state" slot="signState" catchtap="signed">已签约</view>
   </v-house>
   </view>

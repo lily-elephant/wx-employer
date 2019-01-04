@@ -47,72 +47,21 @@ Page({
       if(res.data.code == errorok) {
         console.log(res.data.data)
         if(!res.data.data){res.data.data=[]}
+        for (var index in res.data.data) {
+          res.data.data[index].idcard = getAge(res.data.data[index].idcard)
+          if (res.data.data[index].headimageurl != null) {
+            res.data.data[index].headimageurl = this.data.globalimgeurl + res.data.data[index].headimageurl
+          } else {
+            res.data.data[index].headimageurl = '../../asset/img/avatar.png'
+          }
+        }
         this.setData({
           records: res.data.data
         })
       }
     })
   },
-  getSignList: function () {
-    var that = this
-    wx.request({
-      url: app.globalData.url + 'order/interviewlist',
-      method: 'POST',
-      header: { 'content-type': 'application/x-www-form-urlencoded', 'Token': wx.getStorageSync('token') },
-      data: {
-        pageindex: that.data.pageindex,
-        pagecount: that.data.pagecount
-      },
-      success: function (res) {
-        if (res.data.code == '200') {
-          if (res.data.data != undefined) {
-
-            for (var index in res.data.data) {
-              // start 数据字段名不一致，为保证子组件通用而写
-              res.data.data[index].name = res.data.data[index].hkname
-              res.data.data[index].idcard = getAge(res.data.data[index].hkidcard)
-              // end 数据字段名不一致，为保证子组件通用而写
-              // 如果字段名称一致，写法如下
-              // res.data.data[index].hkidcard = getAge(res.data.data[index].hkidcard)
-              if (res.data.data[index].headimageurl != null) {
-                res.data.data[index].headimageurl = that.data.globalimgeurl + res.data.data[index].headimageurl
-              } else {
-                res.data.data[index].headimageurl = '../../asset/img/avatar.png'
-              }
-            }
-            var list = res.data.data;
-            that.data.lists = that.data.lists.concat(list)
-            if (that.data.lists != null) {
-              that.setData({
-                records: that.data.lists
-              })
-            } else {
-              that.setData({
-                records: []
-              })
-            }
-          } else {
-            wx.showToast({
-              title: '没有更多数据',
-            })
-            if (that.data.pageindex == 1) {
-              that.setData({
-                records: []
-              })
-            }
-          }
-        } else {
-          wx.showToast({
-            title: res.data.message,
-            icon: 'none'
-          })
-        }
-      },
-      complete: function (res) {
-        wx.stopPullDownRefresh();
-      }
-    })
-  },
+  
   
   /**
    * 生命周期函数--监听页面加载
