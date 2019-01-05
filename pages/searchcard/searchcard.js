@@ -1,4 +1,7 @@
 // pages/searchcard/searchcard.js
+import { ListModel } from '../../models/list.js'
+import { errorok } from '../../config.js'
+const listModel = new ListModel()
 Page({
 
   /**
@@ -43,6 +46,17 @@ Page({
       }
     })
   },
+  // 根据类别获取need
+  getNeedByClassic(ccid) {
+    listModel.getNeedListByClassic(ccid).then(res => {
+      if (res.data.code == errorok) {
+        if (!res.data.data) { res.data.data = [] }
+        this.setData({
+          questions: res.data.data,
+        })
+      }
+    })
+  },
   // 获取题目数据
   getQuesList(){
     var that = this
@@ -83,7 +97,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    this.getNeedByClassic(options.ccid)
   },
 
   /**

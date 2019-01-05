@@ -15,6 +15,7 @@ Page({
       return
     }
     this.data.ids = e.detail.val.join(',')
+    wx.setStorageSync('ccid', this.data.ids)
     this.setData({
       showFlag: true
     })

@@ -1,7 +1,7 @@
 <view class="container">
-  <view wx:for="{{list}}" class="item" bindtap="edit">
-    <view class="title">{{item.title}}</view>
-    <view class="card-state" wx:if="{{item.buy==1}}">已购查询卡</view>
+  <view wx:for="{{list}}" class="item" bindtap="edit" wx:key="item.ccid" data-id="{{item.ccid}}">
+    <view class="title">{{item.name}}</view>
+    <view class="card-state" wx:if="{{item.card_isbuy=='已购买'}}">已购查询卡</view>
     <view class="card-state not" wx:else>未购查询卡</view>
   </view>
   <view class="add" bindtap="addNeed">

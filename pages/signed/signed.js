@@ -6,11 +6,6 @@ Page({
    */
   data: {
     signer: {}, // 签约人信息
-    detail: {
-      period: '2019-01-01至2020-06-30',
-      job: '保姆',
-      salary: '5000.00'
-    }
   },
   // 事件处理函数
   // 点赞
@@ -34,7 +29,9 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    this.setData({
+      signer: options
+    })
   },
 
   /**

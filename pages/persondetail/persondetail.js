@@ -22,6 +22,7 @@ Page({
     phoneText: '拨打电话', // 拨打电话按钮文字
     tapFlag: false, //拨打电话按钮是否可用，false不可用
     connectFlag: true, // 联系弹窗显示与否
+    buyFlag: true, // 购买查询卡显示与否
   },
   /*
    * 点击视频简历
@@ -34,8 +35,7 @@ Page({
     let username = wx.getStorageSync('username')
     listModel.getCollectList(username,hkid).then(res => {
       if(res.data.code == errorok){
-        console.log(res.data)
-        if(res.data.data.length > 0){
+        if (!res.data.data || res.data.data.length > 0){
           this.setData({
             collectFlag: 1
           })
@@ -86,8 +86,69 @@ Page({
   },
   // 点击联系
   connect() {
-    this.setData({
-      connectFlag: false
+    let hkid = this.data.person.hkid
+    let username = wx.getStorageSync('username')
+    listModel.connectInterview(username,hkid).then(res => {
+      if(res.data.code == errorok){
+        if (!res.data.data || res.data.data.length > 0){
+          wx.makePhoneCall({
+            phoneNumber: this.data.hkusername
+          })
+        }else{
+          this.setData({
+            connectFlag: false
+          })
+          let ccid = wx.getStorageSync('ccid')
+          this.getInterviewCard(username, ccid)
+        }
+      }
+    })
+  },
+  // 弹出联系面试面板
+  getInterviewCard(username, ccid){
+    listModel.interviewCard(username, ccid).then(res => {
+      if (res.data.code == errorok) {
+        console.log(res.data)
+        if (!res.data.data || res.data.data.remaincount<=0){
+          this.setData({
+            buyFlag: false,
+          })
+        }else{
+          this.setData({
+            count: res.data.data.remaincount,
+            tapFlag: true
+          })
+        }
+      }
+    })
+  },
+  // 点击拨打电话
+  onPhone() {
+    if (this.data.tapFlag) {
+      let username = wx.getStorageSync('username')
+      let hkid = this.data.hkidInner
+      let ccid = wx.getStorageSync('ccid')
+      listModel.tapPhone(username, hkid, ccid).then(res => {
+        if(res.data.code == errorok){
+          this.setData({
+            connectFlag: true
+          })
+          wx.makePhoneCall({
+            phoneNumber: this.data.hkusername // this.data.hkusername 仅为示例，并非真实的电话号码
+          })
+        }
+      })
+    }else{
+      wx.showToast({
+        title: '请购买查询卡',
+        icon: 'none'
+      })
+    }
+  },
+  // 点击购买查询卡
+  buyCard() {
+    wx.navigateTo({
+      url: '../searchcard/searchcard',
     })
   },
   // 阻止冒泡
@@ -96,25 +157,6 @@ Page({
   close() {
     this.setData({
       connectFlag: true
-    })
-  },
-  // 点击拨打电话
-  onPhone() {
-    // if能够查看，初次点击后获取手机号，并且次数减一
-    // 假设获取手机号为 13522154362
-    if (this.data.tapFlag) {
-      this.setData({
-        phoneText: this.data.username
-      })
-      wx.makePhoneCall({
-        phoneNumber: this.data.phoneText // 仅为示例，并非真实的电话号码
-      })
-    }
-  },
-  // 点击购买查询卡
-  buyCard() {
-    wx.navigateTo({
-      url: '../searchcard/searchcard',
     })
   },
   // tab切换
@@ -175,7 +217,8 @@ Page({
    */
   onLoad: function(options) {
     //console.log(options)
-    this.data.username = options.username
+    this.data.hkusername = options.username; // 获取该家政的手机号
+    this.data.hkidInner = options.hkid; //获取该家政的hkid
     this.getHouseKeeperDetails(options.username)
     this.isCollect(options.hkid)
     this.getComment(options.hkid)

@@ -33,7 +33,7 @@
   <!-- 数据存在 -->
   <view class="container {{filterFlag||'filter-sty'}}">
     <view class='item' wx:for="{{list}}" wx:key="index" wx:for-index="index">
-      <v-house housekeep="{{item}}" index="{{index}}" bind:zan="onZan" />
+      <v-house housekeep="{{item}}" index="{{index}}" bind:zan="onZan" bind:detail="onDetail" />
     </view>
   </view>
 </view>

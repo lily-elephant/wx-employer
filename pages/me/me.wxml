@@ -16,7 +16,7 @@
     <view class='caption bordbd9' bindtap='goMyneed'>我的需求<text class='iconfont icon-arrow-right fs99 f-right'></text></view>
   </view>
   <view class='row'>
-    <text class='iconfont row-l icon-orders fsc3'></text>
+    <text class='iconfont row-l icon-lianxi fsc3'></text>
     <view class='caption bordbd9' bindtap='goMyconnect'>我联系的<text class='iconfont icon-arrow-right fs99 f-right'></text></view>
   </view>
   <view class='row'>

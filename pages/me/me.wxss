@@ -60,3 +60,9 @@
   line-height: 1;
   width: 100%;
 }
+.icon-lianxi{
+  font-size: 44rpx;
+}
+.icon-star{
+  font-size: 48rpx;
+}

@@ -57,5 +57,10 @@ Component({
         })
       }
     },
+    detail(e){
+      this.triggerEvent('detail', {
+        val: e.currentTarget.dataset
+      })
+    }
   }
 })

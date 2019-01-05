@@ -76,7 +76,7 @@ Page({
       })
     }
   },
-  // 根据类别获取need
+  // 根据类别获取need试题
   getNeedByClassic(ccid){
     listModel.getNeedListByClassic(ccid).then(res => {
       if(res.data.code == errorok){

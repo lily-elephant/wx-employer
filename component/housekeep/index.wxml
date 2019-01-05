@@ -1,4 +1,4 @@
-<navigator url='../persondetail/persondetail?username={{housekeep.username}}&hkid={{housekeep.hkid}}' class='item-link'>
+<view url='../persondetail/persondetail?username={{housekeep.username}}&hkid={{housekeep.hkid}}' data-username="{{housekeep.username}}" data-hkid="{{housekeep.hkid}}" class='item-link' bindtap="detail">
   <image src='{{housekeep.headimageurl}}' class='item-img'></image>
   <slot name="signState"></slot>
   <view class='item-main'>
@@ -8,7 +8,7 @@
     </view>
     <view class='item-desc fs66'>{{housekeep.brief== "null"||!housekeep.brief ? "未填写" : housekeep.brief}}</view>
   </view>
-</navigator>
+</view>
 <view class='thumbs-up fsc3' bindtap='dianZan' data-idx="{{index}}" data-hkid='{{housekeep.hkid}}' hidden="{{zanFlag}}">
   <text class='iconfont icon-zan {{housekeep.isLike == 1 ? "zan" : ""}}'></text> {{housekeep.likeCount}}
 </view>

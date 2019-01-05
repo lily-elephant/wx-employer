@@ -1,5 +1,5 @@
 {
-  "navigationBarTitleText": "发布需求",
+  "navigationBarTitleText": "需求",
   "usingComponents": {
     "v-filter": "../../component/filter/index"
   }

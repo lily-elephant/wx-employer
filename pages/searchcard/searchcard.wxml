@@ -1,7 +1,7 @@
 <view class="container">
   <view class="recharge-wrapper">
-    <radio-group class="radio-group" bindchange="radioChange">
-      <label class="radio" wx:for="{{items}}">
+    <radio-group class="radio-wrapper" bindchange="radioChange">
+      <label class="radio-price" wx:for="{{items}}">
         <radio value="{{item.value}}" checked="{{item.checked}}" />￥{{item.price}}（{{item.count}}次）
       </label>
     </radio-group>

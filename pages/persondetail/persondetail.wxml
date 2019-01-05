@@ -162,9 +162,9 @@
 <view class="connect-layer" hidden="{{connectFlag}}" bindtap="close">
   <view class="connect-wrapper" catchtap="stopBubble">
     <view class="iconfont icon-close" bindtap="close"></view>
-    <view class="remain-count">剩余{{count}}次</view>
+    <view class="remain-count" hidden="{{!buyFlag}}">剩余{{count}}次</view>
     <view class="connect-btn">
-      <view class="buy bgc3" bindtap="buyCard">购买查询卡</view>
+      <view class="buy bgc3" bindtap="buyCard" hidden="{{buyFlag}}">购买查询卡</view>
       <view class="tap-phone {{tapFlag||'disabled'}}" bindtap="onPhone">{{phoneText}}</view>
     </view>
     <view class="connect-desc">1.只有购买了查询卡，并且查询卡剩余次数大于0的情况下才可查看</view>

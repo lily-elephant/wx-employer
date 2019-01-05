@@ -35,9 +35,24 @@ Page({
     })
   },
   // 点击已签约
-  signed(){
+  signed(e){
+    let person = e.currentTarget.dataset.item
+    let headimageurl = person.headimageurl
+    let name = person.name
+    let workdate = person.workdate
+    let education = person.education
+    let address1 = person.address1
+    let idcard = person.idcard
+    let brief = person.brief
+    let isLike = person.isLike
+    let likeCount = person.likeCount
+    let hkid = person.hkid
+    let sDate = person.sign_startdate
+    let eDate = person.sign_enddate
+    let job = person.sign_job
+    let salary = person.sign_salary
     wx.navigateTo({
-      url: '../signed/signed',
+      url: '../signed/signed?headimageurl=' + headimageurl + '&name=' + name + '&workdate=' + workdate + '&idcard=' + idcard + '&education=' + education + '&address1=' + address1 + '&brief=' + brief + '&hkid=' + hkid + '&sdate=' + sDate + '&edate=' + eDate + '&job=' + job + '&salary=' + salary,
     })
   },
   // 获取已签约列表
@@ -45,7 +60,6 @@ Page({
     let username = wx.getStorageSync('username')
     listModel.getSignList(username).then(res => {
       if(res.data.code == errorok) {
-        console.log(res.data.data)
         if(!res.data.data){res.data.data=[]}
         for (var index in res.data.data) {
           res.data.data[index].idcard = getAge(res.data.data[index].idcard)

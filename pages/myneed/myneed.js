@@ -1,30 +1,42 @@
 // pages/myneed/myneed.js
+import { ListModel } from '../../models/list.js'
+import { errorok } from '../../config.js'
+const listModel = new ListModel()
+
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    list: [
-      {title: '我的需求1',buy: 1},
-      {title: '我的需求1',buy: 0},
-      { title: '我的需求1', buy: 1 },
-      { title: '我的需求1', buy: 0 },    ],
-    
+    list: [],
   },
   /**
    * 事件处理函数
    */ 
   // 编辑我的需求
-  edit(){
+  edit(e){
+    let id = e.currentTarget.dataset.id;
     wx.navigateTo({
-      url: '../searchcard/searchcard',
+      url: '../searchcard/searchcard?ccid='+id,
     })
   },
   // 新增需求
   addNeed(){
     wx.navigateTo({
       url: '../publish/publish',
+    })
+  },
+  // 获取我的需求
+  getMyNeeds() {
+    let username = wx.getStorageSync('username')
+    listModel.getHasNeeds(username).then(res => {
+      if (res.data.code == errorok) {
+        if (!res.data.data) { res.data.data = [] }
+        this.setData({
+          list: res.data.data
+        })
+      }
     })
   },
   /**
@@ -45,7 +57,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    this.getMyNeeds()
   },
 
   /**

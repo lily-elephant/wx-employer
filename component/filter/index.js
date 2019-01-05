@@ -101,7 +101,7 @@ Component({
       let res = [];
       this.data.levelArr.forEach((item) => {
         if (item.flag == true) {
-          res.push(item.ccid)
+          // res.push(item.ccid)
         }
       })
       this.data.classicArr.forEach((item) => {

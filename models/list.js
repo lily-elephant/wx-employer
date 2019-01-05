@@ -81,6 +81,40 @@ class ListModel extends HTTP { // 类，需要new以后去使用
       method: 'POST'
     })
   }
+  // 联系面试 && 我联系的数据列表
+  connectInterview(username, hkid){
+    return this.request({
+      url: 'employer/contractList',
+      data: {
+        username: username,
+        hkid: hkid || ''
+      },
+      method: 'POST'
+    })
+  }
+  // 联系面试面板api
+  interviewCard(username, ccid) {
+    return this.request({
+      url: 'employer/viewcard',
+      data: {
+        username: username,
+        ccid: ccid
+      },
+      method: 'POST'
+    })
+  }
+  // 拨打电话
+  tapPhone(username, hkid, ccid) {
+    return this.request({
+      url: 'employer/contract',
+      data: {
+        username: username,
+        hkid: hkid,
+        ccid: ccid
+      },
+      method: 'POST'
+    })
+  }
 }
 
 export {

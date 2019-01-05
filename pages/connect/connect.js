@@ -1,4 +1,7 @@
 import { getAge } from '../../utils/util.js';
+import { ListModel } from '../../models/list.js'
+import { errorok } from '../../config.js'
+const listModel = new ListModel()
 const app = getApp()
 Page({
 
@@ -47,6 +50,26 @@ Page({
     }
     this.setData({
       list: this.data.lists
+    })
+  },
+  // 获取列表数据
+  getConnectList(){
+    let username = wx.getStorageSync('username')
+    listModel.connectInterview(username).then(res => {
+      if(res.data.code == errorok){
+        if(!res.data.data) res.data.data = []
+        for (var index in res.data.data) {
+          res.data.data[index].idcard = getAge(res.data.data[index].idcard)
+          if (res.data.data[index].headimageurl != null) {
+            res.data.data[index].headimageurl = this.data.globalimgeurl + res.data.data[index].headimageurl
+          } else {
+            res.data.data[index].headimageurl = '../../asset/img/avatar.png'
+          }
+        }
+        this.setData({
+          list: res.data.data
+        })
+      }
     })
   },
   // 获取列表数据
@@ -102,7 +125,6 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    this.getHousekeeperList()
   },
 
   /**
@@ -116,6 +138,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
+    this.getConnectList()
 
   },
 

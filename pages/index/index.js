@@ -39,18 +39,20 @@ Page({
   },
   // 获取权限username
   getNeeds() {
-    listModel.getAuth().then(res => {
-      if (res.data.code == errorok) {
-        wx.setStorageSync('username', res.data.data.username)
-        let username = wx.getStorageSync('username')
-        this._getHasNeeds(username);
-      } else {
-        wx.showToast({
-          title: res.data.message,
-          icon: "none"
-        })
-      }
-    })
+    if(wx.getStorageSync('token')){
+      listModel.getAuth().then(res => {
+        if (res.data.code == errorok) {
+          wx.setStorageSync('username', res.data.data.username)
+          let username = wx.getStorageSync('username')
+          this._getHasNeeds(username);
+        } else {
+          wx.showToast({
+            title: res.data.message,
+            icon: "none"
+          })
+        }
+      })
+    }
   },
   // 点击筛选
   filter(){
@@ -66,14 +68,16 @@ Page({
   },
   // 确认筛选条件
   sure(e){
-    console.log(e)
+   // console.log(e)
     this.setData({
       filterFlag: true
     })
   },
   // 新增需求
   addNeed(){
-    
+    wx.navigateTo({
+      url: '../publish/publish',
+    })
   },
   // 点击具体需求
   tapNeed(e){
@@ -95,7 +99,6 @@ Page({
   },
   // 点赞
   onZan(e){
-    console.log(e)
     let index = e.detail.index;
     if (e.detail.message == '点赞成功') {
       this.data.lists[index].isLike = '1'
@@ -108,6 +111,12 @@ Page({
     }
     this.setData({
       list: this.data.lists
+    })
+  },
+  onDetail(e){
+    let housekeep = e.detail.val;
+    wx.navigateTo({
+      url: '../persondetail/persondetail?username=' + housekeep.username + '&hkid=' + housekeep.hkid,
     })
   },
   /**
@@ -133,45 +142,49 @@ Page({
         'content-type': 'application/x-www-form-urlencoded',
         'Token':wx.getStorageSync('token')
       }
-    }else{
-      headers = { 'content-type': 'application/x-www-form-urlencoded' }
-    }
-    wx.request({
-      url: app.globalData.url + 'housekeeper/matchhousekeeperlist',
-      method: 'POST',
-      header: headers,
-      data: {
-        //product: 'EMPLOYER',
-        pageindex: that.data.startpage,
-        pagecount: that.data.pageCount,
-        matchcount:0
-      },
-      success: function (res) {
-        //console.log(res.data.data[0])
-        if (res.data.data != undefined){
-          for (var index in res.data.data) {
-            res.data.data[index].idcard = getAge(res.data.data[index].idcard)
-            if (res.data.data[index].headimageurl != null) {
-              res.data.data[index].headimageurl = that.data.globalimgeurl + res.data.data[index].headimageurl
-            } else {
-              res.data.data[index].headimageurl = '../../asset/img/avatar.png'
+      wx.request({
+        url: app.globalData.url + 'housekeeper/matchhousekeeperlist',
+        method: 'POST',
+        header: headers,
+        data: {
+          //product: 'EMPLOYER',
+          pageindex: that.data.startpage,
+          pagecount: that.data.pageCount,
+          matchcount: 0
+        },
+        success: function (res) {
+          //console.log(res.data.data[0])
+          if (res.data.data != undefined) {
+            for (var index in res.data.data) {
+              res.data.data[index].idcard = getAge(res.data.data[index].idcard)
+              if (res.data.data[index].headimageurl != null) {
+                res.data.data[index].headimageurl = that.data.globalimgeurl + res.data.data[index].headimageurl
+              } else {
+                res.data.data[index].headimageurl = '../../asset/img/avatar.png'
+              }
             }
+            var list = res.data.data;
+            that.data.lists = that.data.lists.concat(list)
+            that.setData({
+              list: that.data.lists
+            })
+          } else {
+            wx.showToast({
+              title: '没有更多数据',
+            })
           }
-          var list = res.data.data;
-          that.data.lists = that.data.lists.concat(list)
-          that.setData({
-            list: that.data.lists
-          })
-        }else{
-          wx.showToast({
-            title: '没有更多数据',
-          })
+        },
+        complete: function (res) {
+          wx.stopPullDownRefresh();
         }
-      },
-      complete: function (res) {
-        wx.stopPullDownRefresh();
-      }
-    })
+      })
+    }else{
+      wx.showToast({
+        title: '请登录',
+        icon: 'none'
+      })
+    }
+    
   },
   getBanner:function(){
     var that = this 
@@ -216,14 +229,16 @@ Page({
   },
   
   onShow: function () {
-    this.getNeeds(); // 获取我的需求
-    //获取匹配的家政人员
-    this.getHousekeeperList();
     if(!wx.getStorageSync('isSee')){
       wx.redirectTo({
         url: '../knowledge/knowledge',
       })
+      return
     }
+    this.getNeeds(); // 获取我的需求
+    //获取匹配的家政人员
+    this.data.lists = []
+    this.getHousekeeperList();
   },
   /**
    * 页面相关事件处理函数--监听用户下拉动作
