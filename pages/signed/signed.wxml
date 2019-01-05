@@ -9,5 +9,5 @@
     <view class="row">职位：{{signer.job=='null'?'':signer.job}}</view>
     <view class="row">月薪：￥{{signer.salary=='null'?'':signer.salary}}</view>
   </view>
-  <view class="download bgc3">下载合同</view>
+  <view class="download bgc3" bindtap="download">下载合同</view>
 </view>

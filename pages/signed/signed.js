@@ -25,12 +25,28 @@ Page({
       signer: this.data.signer
     })
   },
+  // 下载合同
+  download(){
+    console.log(this.data.downloadurl)
+    wx.downloadFile({
+      url: this.data.downloadurl, 
+      success(res) {
+        // 只要服务器有响应数据，就会把响应内容写入文件并进入 success 回调，业务需要自行判断是否下载到了想要的内容
+        if (res.statusCode === 200) {
+          wx.playVoice({
+            filePath: res.tempFilePath
+          })
+        }
+      }
+    })
+  },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
     this.setData({
-      signer: options
+      signer: options,
+      downloadurl: options.downloadurl
     })
   },
 

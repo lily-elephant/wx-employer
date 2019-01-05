@@ -54,7 +54,18 @@ class ListModel extends HTTP { // 类，需要new以后去使用
     return this.request({
       url: 'employer/signlist',
       data: {
+        username: username
+      },
+      method: 'POST'
+    })
+  }
+  // 获取是否签约
+  getIsSigned(username, hkid) {
+    return this.request({
+      url: 'employer/signlist',
+      data: {
         username: username,
+        hkid: hkid
       },
       method: 'POST'
     })

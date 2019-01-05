@@ -23,12 +23,30 @@ Page({
     tapFlag: false, //拨打电话按钮是否可用，false不可用
     connectFlag: true, // 联系弹窗显示与否
     buyFlag: true, // 购买查询卡显示与否
+    signFlag: true, //判断是否已签约，true表示未签约
   },
   /*
    * 点击视频简历
    */
   videoIntro() {
 
+  },
+  // 获取是否已签约
+  isSigned(hkid){
+    let username = wx.getStorageSync('username')
+    listModel.getIsSigned(username,hkid).then(res => {
+      if(res.data.code == errorok){
+        if(!res.data.data || res.data.data.length==0){
+          this.setData({
+            signFlag: true
+          })
+        }else{
+          this.setData({
+            signFlag: false
+          })
+        }
+      }
+    })
   },
   // 获取数据是否收藏过
   isCollect(hkid){
@@ -70,6 +88,9 @@ Page({
    * 点击申请签约
    */
   apply() {
+    if(!this.data.signFlag){
+      return
+    }
     let headimageurl = this.data.person.headimageurl
     let name = this.data.person.name
     let workdate = this.data.person.workdate
@@ -220,6 +241,7 @@ Page({
     this.data.hkusername = options.username; // 获取该家政的手机号
     this.data.hkidInner = options.hkid; //获取该家政的hkid
     this.getHouseKeeperDetails(options.username)
+    this.isSigned(options.hkid)
     this.isCollect(options.hkid)
     this.getComment(options.hkid)
     this.getCertificateList(options.hkid)

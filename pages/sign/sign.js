@@ -51,14 +51,15 @@ Page({
     let eDate = person.sign_enddate
     let job = person.sign_job
     let salary = person.sign_salary
+    let downloadurl = person.sign_downloadurl
     wx.navigateTo({
-      url: '../signed/signed?headimageurl=' + headimageurl + '&name=' + name + '&workdate=' + workdate + '&idcard=' + idcard + '&education=' + education + '&address1=' + address1 + '&brief=' + brief + '&hkid=' + hkid + '&sdate=' + sDate + '&edate=' + eDate + '&job=' + job + '&salary=' + salary,
+      url: '../signed/signed?headimageurl=' + headimageurl + '&name=' + name + '&workdate=' + workdate + '&idcard=' + idcard + '&education=' + education + '&address1=' + address1 + '&brief=' + brief + '&hkid=' + hkid + '&sdate=' + sDate + '&edate=' + eDate + '&job=' + job + '&salary=' + salary + '&downloadurl=' + downloadurl,
     })
   },
   // 获取已签约列表
   _getSignList(){
     let username = wx.getStorageSync('username')
-    listModel.getSignList(username).then(res => {
+    listModel.getSignList(username, null).then(res => {
       if(res.data.code == errorok) {
         if(!res.data.data){res.data.data=[]}
         for (var index in res.data.data) {

@@ -2,6 +2,7 @@
 import { ListModel } from '../../models/list.js'
 import { errorok } from '../../config.js'
 const listModel = new ListModel()
+const app = getApp()
 Page({
 
   /**
@@ -34,6 +35,7 @@ Page({
   },
   // 购买
   buy(){
+    let that = this
     wx.showModal({
       title: '提示',
       content: `支付金额：￥${this.data.price}`,
@@ -41,8 +43,83 @@ Page({
       showCancel: false,
       success(res) {
         if (res.confirm) {
-          console.log('用户点击确定')
+          that.pay()
         } 
+      }
+    })
+  },
+  // 支付方法
+  pay(){
+    let that = this
+    // 先获取openid
+    wx.login({
+      success: function (res) {
+        if (res.code) {
+          //发起网络请求
+          wx.request({
+            url: app.globalData.url + 'wx/getopenid',
+            method: 'POST',
+            header: {
+              'content-type': 'application/x-www-form-urlencoded',
+              'Token': wx.getStorageSync('token')
+            },
+            data: {
+              code: res.code
+            },
+            success: function (res) {
+              var openid = res.data.openid;
+              wx.request({
+                url: app.globalData.url + 'wx/wxPay',
+                method: 'POST',
+                header: {
+                  'content-type': 'application/x-www-form-urlencoded',
+                  'Token': wx.getStorageSync('token')
+                },
+                data: {
+                  openid: openid,
+                  money: that.data.price * 100,
+                  productBrief: "充值",
+                  transactionid: '0',
+                  businesstype: '充值',
+                  osid: '0',
+                },
+                success: function (res) {
+                  console.log(res.data.data)
+                  var data = res.data.data
+                  //console.log(JSON.parse(res.data.data))
+                  var orderNumber = res.data.ordernumber
+                  wx.requestPayment({
+                    'timeStamp': data.timeStamp,
+                    'nonceStr': data.nonceStr,
+                    'package': data.package,
+                    'signType': 'MD5',
+                    'paySign': data.paySign,
+                    'success': function (res) {
+                      //console.log(res, 1111111111111);
+                      wx.showToast({
+                        title: '支付成功',
+                      })
+                      this.onLoad()
+                    },
+                    'fail': function (res) {
+                      //console.log(res, 222222222);
+                      wx.showToast({
+                        title: '取消支付',
+                        icon: null
+                      })
+                    }
+
+                  });
+                }
+              })
+            },
+            fail: function (err) {
+              console.log(err)
+            }
+          })
+        } else {
+          console.log('获取用户登录态失败！' + res.errMsg)
+        }
       }
     })
   },

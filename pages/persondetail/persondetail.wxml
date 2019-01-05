@@ -156,7 +156,7 @@
 <view class="opt-wrapper">
   <view class="collect iconfont icon-star {{collectFlag==1 ? 'has-collect': ''}}" bindtap="collect"></view>
   <view class="connect-interview align-c" data-hkid='{{person.hkid}}' bindtap="connect">联系面试</view>
-  <view class="apply-sign align-c" bindtap="apply">申请签约</view>
+  <view class="apply-sign align-c" bindtap="apply">{{signFlag?'申请签约':'已签约'}}</view>
 </view>
 <!-- 联系面试弹窗 -->
 <view class="connect-layer" hidden="{{connectFlag}}" bindtap="close">
