@@ -24,13 +24,28 @@ Page({
     connectFlag: true, // 联系弹窗显示与否
     buyFlag: true, // 购买查询卡显示与否
     signFlag: true, //判断是否已签约，true表示未签约
+    videoFlag: true, // 判断视频简历显示与否
+    videoPlayFlag: true, // 判断视频是否显示,true不显示
+    contain: 'contain'
   },
   /*
    * 点击视频简历
    */
   videoIntro() {
-
+    this.setData({
+      videoPlayFlag: false
+    })
   },
+  videoErrorCallback: function (e) {
+    console.log('视频错误信息:')
+    console.log(e.detail.errMsg)
+  },
+  closeVideo(){
+    this.setData({
+      videoPlayFlag: true,
+    })
+  },
+  
   // 获取是否已签约
   isSigned(hkid){
     let username = wx.getStorageSync('username')
@@ -70,7 +85,7 @@ Page({
       collectFlag: this.data.collectFlag
     })
     let meUser = wx.getStorageSync('username')
-    listModel.collectState(meUser, this.data.hkid, this.data.collectFlag)
+    listModel.collectState(meUser, this.data.hkidInner, this.data.collectFlag)
       .then(res => {
         if (res.data.code == errorok) {
           wx.showToast({
@@ -407,11 +422,6 @@ Page({
       success: function(res) {
         //console.log(res.data.data)
         if (res.data.data != undefined) {
-          // for (var index in res.data.data) {
-          //   res.data.data[index].idcard = getAge(res.data.data[index].idcard)
-          // }
-          that.data.hkid = res.data.data[0].hkid; // 获取hkid
-          // that.data.collectFlag = res.data.data[0].flag; // 获取收藏状态
           res.data.data[0].age = getAge(res.data.data[0].idcard)
           if (res.data.data[0].servicestate != null) {
             res.data.data[0].servicestate = res.data.data[0].servicestate == 0 ? "找工作" : "在职"
@@ -424,10 +434,15 @@ Page({
           } else {
             res.data.data[0].headimageurl = '../../asset/img/avatar.png'
           }
-
           that.setData({
-            person: res.data.data[0]
+            person: res.data.data[0],
           })
+          if (res.data.data[0].headvideourl) {
+            that.setData({
+              videoFlag: false,
+              videoUrl: this.data.person.headvideourl
+            })
+          }
         } else {
           wx.showToast({
             title: '没有更多数据',

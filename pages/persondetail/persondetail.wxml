@@ -2,7 +2,7 @@
 <view class='person-info'>
   <view class="img-wrapper">
     <image class='person-img' src='{{person.headimageurl}}' />
-    <view class="video-cap" bindtap="videoIntro">视频简历</view>
+    <view class="video-cap" bindtap="videoIntro" hidden="{{videoFlag}}">视频简历</view>
   </view>
   <view class='person-base'>
     <text class='person-name'>{{person.name == null ? "未填写" : person.name}}</text>
@@ -151,6 +151,11 @@
       </view>
     </view>
   </view>
+</view>
+<!-- video -->
+<view class="connect-layer video-wrapper" wx:if="{{!videoPlayFlag}}">
+  <video id="myVideo" class="video" objectFit="{{contain}}" src="{{globalimgeurl + videoUrl}}" binderror="videoErrorCallback" controls></video>
+  <view class="iconfont icon-close" bindtap="closeVideo"></view>
 </view>
 <!-- 底部操作项 -->
 <view class="opt-wrapper">

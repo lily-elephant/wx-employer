@@ -1,4 +1,5 @@
 // pages/signed/signed.js
+const app = getApp()
 Page({
 
   /**
@@ -6,6 +7,7 @@ Page({
    */
   data: {
     signer: {}, // 签约人信息
+    globalimgeurl: app.globalData.imgeurl,
   },
   // 事件处理函数
   // 点赞
@@ -29,7 +31,7 @@ Page({
   download(){
     console.log(this.data.downloadurl)
     wx.downloadFile({
-      url: this.data.downloadurl, 
+      url: this.data.globalimgeurl + this.data.downloadurl, 
       success(res) {
         // 只要服务器有响应数据，就会把响应内容写入文件并进入 success 回调，业务需要自行判断是否下载到了想要的内容
         if (res.statusCode === 200) {
