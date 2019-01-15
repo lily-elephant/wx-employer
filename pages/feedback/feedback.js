@@ -14,8 +14,7 @@ Page({
     this.data.val = e.detail.value 
     this.setData({
       val: this.data.val
-    })   
-    //console.log(e.detail.value)
+    })
   },
   // 提交
   formSubmit: function(e){
@@ -32,7 +31,6 @@ Page({
           comment: that.data.val
         },
         success: function (res) {
-          console.log(res.data.data)
           if (res.data.code == 200) {
             wx.showToast({
               title: '反馈成功'

@@ -2,7 +2,26 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c2465aa7-5b51-4393-a7db-da8060279cc6" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pages/apply/apply.js" afterPath="$PROJECT_DIR$/pages/apply/apply.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pages/bannerDes/bannerDes.js" afterPath="$PROJECT_DIR$/pages/bannerDes/bannerDes.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pages/collect/collect.js" afterPath="$PROJECT_DIR$/pages/collect/collect.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pages/connect/connect.js" afterPath="$PROJECT_DIR$/pages/connect/connect.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pages/feedback/feedback.js" afterPath="$PROJECT_DIR$/pages/feedback/feedback.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pages/findpwd/findpwd.js" afterPath="$PROJECT_DIR$/pages/findpwd/findpwd.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pages/giveup/giveup.js" afterPath="$PROJECT_DIR$/pages/giveup/giveup.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pages/identify/identify.js" afterPath="$PROJECT_DIR$/pages/identify/identify.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pages/interview/interview.js" afterPath="$PROJECT_DIR$/pages/interview/interview.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pages/interviewrecord/interviewrecord.js" afterPath="$PROJECT_DIR$/pages/interviewrecord/interviewrecord.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pages/me/me.js" afterPath="$PROJECT_DIR$/pages/me/me.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pages/myfeedback/myfeedback.js" afterPath="$PROJECT_DIR$/pages/myfeedback/myfeedback.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pages/myinfo/myinfo.js" afterPath="$PROJECT_DIR$/pages/myinfo/myinfo.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pages/order/order.js" afterPath="$PROJECT_DIR$/pages/order/order.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pages/personalinfo/personalinfo.js" afterPath="$PROJECT_DIR$/pages/personalinfo/personalinfo.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pages/persondetail/persondetail.js" afterPath="$PROJECT_DIR$/pages/persondetail/persondetail.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pages/publish/publish.js" afterPath="$PROJECT_DIR$/pages/publish/publish.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pages/register/register.js" afterPath="$PROJECT_DIR$/pages/register/register.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pages/searchcard/searchcard.js" afterPath="$PROJECT_DIR$/pages/searchcard/searchcard.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pages/signed/signed.js" afterPath="$PROJECT_DIR$/pages/signed/signed.js" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -16,33 +35,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="collect.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/pages/collect/collect.js">
+      <file leaf-file-name="me.js" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/pages/me/me.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="270">
-              <caret line="18" column="9" lean-forward="true" selection-start-line="18" selection-start-column="9" selection-end-line="18" selection-end-column="9" />
-              <folding>
-                <element signature="e#0#45#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="order.js" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/pages/order/order.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="334">
-              <caret line="165" column="56" lean-forward="true" selection-start-line="165" selection-start-column="56" selection-end-line="165" selection-end-column="56" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="order.wxml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/pages/order/order.wxml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="219">
-              <caret line="18" column="140" lean-forward="false" selection-start-line="18" selection-start-column="134" selection-end-line="18" selection-end-column="140" />
+            <state relative-caret-position="204">
+              <caret line="39" column="0" lean-forward="true" selection-start-line="39" selection-start-column="0" selection-end-line="39" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -54,6 +51,7 @@
     <findStrings>
       <find>pay</find>
       <find>billid</find>
+      <find>console</find>
     </findStrings>
     <dirStrings>
       <dir>$PROJECT_DIR$/pages</dir>
@@ -66,6 +64,7 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/pages/collect/collect.js" />
+        <option value="$PROJECT_DIR$/pages/me/me.js" />
       </list>
     </option>
   </component>
@@ -135,6 +134,12 @@
               <item name="wx-employer" type="b2602c69:ProjectViewProjectNode" />
               <item name="wx-employer" type="462c0819:PsiDirectoryNode" />
               <item name="pages" type="462c0819:PsiDirectoryNode" />
+              <item name="identify" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="wx-employer" type="b2602c69:ProjectViewProjectNode" />
+              <item name="wx-employer" type="462c0819:PsiDirectoryNode" />
+              <item name="pages" type="462c0819:PsiDirectoryNode" />
               <item name="order" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
@@ -182,12 +187,12 @@
       <option name="presentableId" value="Default" />
       <updated>1546618996467</updated>
       <workItem from="1546618999630" duration="684000" />
-      <workItem from="1547522868084" duration="412000" />
+      <workItem from="1547522868084" duration="1434000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="1096000" />
+    <option name="totallyTimeSpent" value="2118000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1280" height="735" extended-state="0" />
@@ -226,19 +231,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#45#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/pages/collect/collect.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="270">
-          <caret line="18" column="9" lean-forward="true" selection-start-line="18" selection-start-column="9" selection-end-line="18" selection-end-column="9" />
-          <folding>
-            <element signature="e#0#45#0" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -254,6 +247,22 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="334">
           <caret line="165" column="56" lean-forward="true" selection-start-line="165" selection-start-column="56" selection-end-line="165" selection-end-column="56" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pages/collect/collect.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="270">
+          <caret line="18" column="9" lean-forward="true" selection-start-line="18" selection-start-column="9" selection-end-line="18" selection-end-column="9" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pages/me/me.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="204">
+          <caret line="39" column="0" lean-forward="true" selection-start-line="39" selection-start-column="0" selection-end-line="39" selection-end-column="0" />
           <folding />
         </state>
       </provider>

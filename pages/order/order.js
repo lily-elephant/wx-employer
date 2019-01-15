@@ -25,7 +25,6 @@ Page({
     this.getOrderList(this.data.currentTab)
   },
   gojump:function(e){
-    console.log()
     var username = e.currentTarget.dataset.hkphone 
     var hkid = e.currentTarget.dataset.hkid 
     wx.navigateTo({
@@ -160,7 +159,6 @@ Page({
                   billid: e.currentTarget.dataset.billid 
                 },
                 success: function (res) {
-                  console.log(res.data.data)
                   var data = res.data.data
                   //console.log(JSON.parse(res.data.data))
                   var orderNumber = res.data.ordernumber
@@ -190,11 +188,9 @@ Page({
               })
             },
             fail: function (err) {
-              console.log(err)
             }
           })
         } else {
-          console.log('获取用户登录态失败！' + res.errMsg)
         }
       }
     })

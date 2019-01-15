@@ -29,7 +29,6 @@ Page({
   },
   // 下载合同
   download(){
-    console.log(this.data.downloadurl)
     wx.downloadFile({
       url: this.data.globalimgeurl + this.data.downloadurl, 
       success(res) {

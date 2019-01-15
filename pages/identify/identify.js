@@ -61,7 +61,6 @@ Page({
         registertype: that.data.registertype
       },
       success:function(res){
-        console.log(res)
         if(res.data.code == 200){
           wx.showToast({
             title: '验证码发送成功',

@@ -53,7 +53,6 @@ Page({
    * 提交
    */
   submit: function(){
-    //console.log(this.data.answerList)
     wx.setStorageSync('userNeed', this.data.answerList)
     // 提交成功跳转
     wx.navigateTo({

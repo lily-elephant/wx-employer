@@ -14,7 +14,6 @@ Page({
         Token: wx.getStorageSync('token')
       },
       success: function (res) {
-        console.log(res.data.data)
         if (res.data.code == 200) {
           that.setData({
             list:res.data.data

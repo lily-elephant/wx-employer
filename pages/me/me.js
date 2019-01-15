@@ -37,10 +37,10 @@ Page({
             filePath: tempFilePaths[0],
             name: 'pic',
             success: function (res) {
-              console.log(res);
+
             },
             fail: function (res) {
-              console.log(res);
+
             }
           })
         }

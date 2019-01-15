@@ -15,8 +15,7 @@ Page({
   },
   // 点击雇佣
   sure: function (e) {
-    var that = this 
-    //console.log(e.currentTarget.dataset.interviewid)
+    var that = this
     wx.request({
       url: app.globalData.url + 'order/sureInterview',
       method: 'POST',
@@ -25,7 +24,6 @@ Page({
         interviewid: e.currentTarget.dataset.interviewid
       },
       success: function (res) {
-        //console.log(res)
         if (res.data.code == '200') {
           wx.showToast({
             title: '操作成功',
@@ -57,7 +55,6 @@ Page({
         pagecount: that.data.pagecount
       },
       success: function (res) {
-        //console.log(res.data.data)
         if (res.data.code == '200') {
           if (res.data.data != undefined) {
 

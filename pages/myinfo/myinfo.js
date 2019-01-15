@@ -5,7 +5,6 @@ Page({
   },
   // 点击信息
   readTap: function(e){
-    console.log(e.currentTarget.dataset)
     var that = this
     wx.request({
       url: app.globalData.url + 'noticeIsRead',
@@ -19,7 +18,6 @@ Page({
         type: e.currentTarget.dataset.type
       },
       success: function (res) {
-        console.log(res.data.data)
         if(res.data.code == 200){
           that.data.infos[e.currentTarget.dataset.index].isread = 1;
           that.setData({

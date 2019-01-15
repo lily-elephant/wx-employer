@@ -37,8 +37,7 @@ Page({
     })
   },
   videoErrorCallback: function (e) {
-    console.log('视频错误信息:')
-    console.log(e.detail.errMsg)
+    // console.log(e.detail.errMsg)
   },
   closeVideo(){
     this.setData({
@@ -144,7 +143,6 @@ Page({
   getInterviewCard(username, ccid){
     listModel.interviewCard(username, ccid).then(res => {
       if (res.data.code == errorok) {
-        console.log(res.data)
         if (!res.data.data || res.data.data.remaincount<=0){
           this.setData({
             buyFlag: false,

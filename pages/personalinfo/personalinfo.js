@@ -35,7 +35,6 @@ Page({
         Token: wx.getStorageSync('token')
       },
       success: function (res) {
-        //console.log(res.data.data)
         if (res.data.code == 200) {
           if (res.data.data.headimageurl != null) {
             that.data.imgUrl = app.globalData.imgeurl + res.data.data.headimageurl

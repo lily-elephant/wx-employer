@@ -25,7 +25,6 @@ Page({
         interviewid: this.data.interviewid
       },
       success: function (res) {
-        console.log(res)
         if (res.data.code == '200') {
           wx.showToast({
             title: '操作成功',

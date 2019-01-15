@@ -45,7 +45,6 @@ Page({
       method: 'POST',
       header: { 'content-type': 'application/x-www-form-urlencoded'},
       success: function (res) {
-        //console.log(res.data)
         if (res.data.code == '200' && res.data.data[0] != undefined ) {
           that.data.paymoney = res.data.data[0].appointmentMoney
           var money = res.data.data[0].appointmentMoney / 100
@@ -91,7 +90,6 @@ Page({
       dateTimeArray1: obj1.dateTimeArray,
       dateTime1: obj1.dateTime
     });
-    //console.log(obj1.dateTimeArray)
     //options.hkid
     this.data.hkid = options.hkid
   },
@@ -100,7 +98,6 @@ Page({
     this.setData({ 
       dateTime1: e.detail.value 
     });
-    //console.log(e)
   },
   changeDateTimeColumn1(e) {
     var arr = this.data.dateTime1, dateArr = this.data.dateTimeArray1;
@@ -151,7 +148,6 @@ Page({
   },
   bindCityChange: function (e) {
     //先取市里面的 ProID
-    //  console.log(cityArray)
     for (var j = 0; j < area.cityArray.length; ++j) {
       var item = area.cityArray[j]
       if (item.name == this.cityArrayDemo[e.detail.value]) {
@@ -165,7 +161,6 @@ Page({
       cityIndex: e.detail.value,
       countyIndex: 0
     })
-    //console.log(e.detail.value)
     this.data.subCity = this.data.submitCity[e.detail.value]
   },
   // textarea
@@ -219,9 +214,7 @@ Page({
                   osid: '0',
                 },
                 success: function (res) {
-                  console.log(res.data.data)
                   var data = res.data.data
-                  //console.log(JSON.parse(res.data.data))
                   var orderNumber = res.data.ordernumber
                   wx.requestPayment({
                     'timeStamp': data.timeStamp,
@@ -230,14 +223,12 @@ Page({
                     'signType': 'MD5',
                     'paySign': data.paySign,
                     'success': function (res) {
-                      //console.log(res, 1111111111111);
                       wx.showToast({
                         title: '充值成功',
                       })
                       that.goSubmit() 
                     },
                     'fail': function (res) {
-                      //console.log(res, 222222222);
                       wx.showToast({
                         title: '取消支付',
                         icon: null
@@ -249,11 +240,9 @@ Page({
               })
             },
             fail: function (err) {
-              console.log(err)
             }
           })
         } else {
-          console.log('获取用户登录态失败！' + res.errMsg)
         }
       }
     })
@@ -270,7 +259,6 @@ Page({
         result:'尚未面试'
       },
       success: function (res) {
-        //console.log(res)
         if(res.data.code == '200'){
           wx.navigateTo({
             url: '../meetsuccess/meetsuccess',

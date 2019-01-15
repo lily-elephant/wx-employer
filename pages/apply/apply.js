@@ -18,7 +18,6 @@ Page({
    * **/
   // 点赞
   onZan(e) {
-    console.log(e)
     // ps：面试列表接口暂无点赞字段2019/01/03/23:23
     let index = e.detail.index;
     if (e.detail.message == '点赞成功') {
@@ -36,7 +35,6 @@ Page({
   },
   // 点击CheckBox
   check(e){
-    console.log(e)
     this.setData({
       val: e.detail.value
     })

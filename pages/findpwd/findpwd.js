@@ -137,7 +137,6 @@ Page({
         if (res.data.code == 200) {
           //获取到用户的token 并保存
           wx.setStorageSync('token', res.data.data.Token)
-          console.log(wx.getStorageSync('token'));
           wx.showToast({
             title: '密码找回成功！',
             icon: "success",

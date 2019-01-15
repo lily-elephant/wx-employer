@@ -30,14 +30,12 @@ Page({
   },
   // 确认筛选条件
   sure(e) {
-    console.log(e)
     this.setData({
       filterFlag: true
     })
   },
   // 点赞
   onZan(e) {
-    console.log(e)
     let index = e.detail.index;
     if (e.detail.message == '点赞成功') {
       this.data.lists[index].isLike = '1'
@@ -95,7 +93,6 @@ Page({
         matchcount: 0
       },
       success: function (res) {
-        //console.log(res.data.data[0])
         if (res.data.data != undefined) {
           for (var index in res.data.data) {
             res.data.data[index].idcard = getAge(res.data.data[index].idcard)

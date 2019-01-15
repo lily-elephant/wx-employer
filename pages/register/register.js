@@ -56,7 +56,6 @@ Page({
   */
   getCode: function () {
     var that = this;
-    console.log(that.data.phone);
     var myreg = /^(0|86|17951)?(13[0-9]|15[012356789]|17[013678]|18[0-9]|14[57])[0-9]{8}$/
     if (!myreg.test(this.data.phone)) {
       wx.showModal({
@@ -135,7 +134,6 @@ Page({
         if(res.data.code == 200){
           //获取到用户的token 并保存
           wx.setStorageSync('token', res.data.data.Token)
-          console.log(wx.getStorageSync('token'));
           wx.showToast({
             title: '注册成功！',
             icon:"success"

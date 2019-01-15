@@ -30,14 +30,12 @@ Page({
   },
   // 确认筛选条件
   sure(e) {
-    console.log(e)
     this.setData({
       filterFlag: true
     })
   },
   // 点赞
   onZan(e) {
-    console.log(e)
     let index = e.detail.index;
     if (e.detail.message == '点赞成功') {
       this.data.lists[index].isLike = '1'

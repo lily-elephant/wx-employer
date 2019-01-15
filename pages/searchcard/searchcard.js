@@ -24,7 +24,6 @@ Page({
    */ 
   // radio事件
   radioChange(e) {
-    // console.log('radio发生change事件，携带value值为：', e.detail.value)
     let val = e.detail.value;
     this.data.items.forEach((item) => {
       if(item.value == val){
@@ -119,7 +118,6 @@ Page({
               })
             },
             fail: function (err) {
-              // console.log(err)
             }
           })
         } else {
