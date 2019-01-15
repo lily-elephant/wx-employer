@@ -235,6 +235,9 @@ Page({
       })
       return
     }
+    this.setData({
+      needFlag: true
+    })
     this.getNeeds(); // 获取我的需求
     //获取匹配的家政人员
     this.data.lists = []

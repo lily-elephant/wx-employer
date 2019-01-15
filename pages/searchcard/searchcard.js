@@ -10,24 +10,27 @@ Page({
    */
   data: {
     items: [
-      { price: '2000', count: '20', value: 'v1', checked: 'true' },
-      { price: '3000', count: '35', value: 'v2' },
+      { price: '2000', count: 20, value: 'v1', checked: 'true' },
+      { price: '3000', count: 35, value: 'v2' },
     ],
 
     answerList: [],
-    price: '2000'
+    price: '2000',
+    count: 20,
+    ccid: null
   },
   /**
    * 事件处理函数
    */ 
   // radio事件
   radioChange(e) {
-    console.log('radio发生change事件，携带value值为：', e.detail.value)
+    // console.log('radio发生change事件，携带value值为：', e.detail.value)
     let val = e.detail.value;
     this.data.items.forEach((item) => {
       if(item.value == val){
         this.setData({
-          price: item.price
+          price: item.price,
+          count: item.count
         })
       }
     })
@@ -54,6 +57,7 @@ Page({
     // 先获取openid
     wx.login({
       success: function (res) {
+        // console.log(res, 's1')
         if (res.code) {
           //发起网络请求
           wx.request({
@@ -67,6 +71,7 @@ Page({
               code: res.code
             },
             success: function (res) {
+              // console.log(res, 's2')
               var openid = res.data.openid;
               wx.request({
                 url: app.globalData.url + 'wx/wxPay',
@@ -79,12 +84,12 @@ Page({
                   openid: openid,
                   money: that.data.price * 100,
                   productBrief: "充值",
-                  transactionid: '0',
-                  businesstype: '充值',
-                  osid: '0',
+                  transactionid: that.data.count,
+                  businesstype: 'V2_购买查询卡',
+                  osid: that.data.ccid,
                 },
                 success: function (res) {
-                  console.log(res.data.data)
+                  // console.log(res, 's3')
                   var data = res.data.data
                   //console.log(JSON.parse(res.data.data))
                   var orderNumber = res.data.ordernumber
@@ -114,11 +119,11 @@ Page({
               })
             },
             fail: function (err) {
-              console.log(err)
+              // console.log(err)
             }
           })
         } else {
-          console.log('获取用户登录态失败！' + res.errMsg)
+          // console.log('获取用户登录态失败！' + res.errMsg)
         }
       }
     })
@@ -175,6 +180,9 @@ Page({
    */
   onLoad: function (options) {
     this.getNeedByClassic(options.ccid)
+    this.setData({
+      ccid: options.ccid
+    })
   },
 
   /**

@@ -25,7 +25,7 @@
 <view class='login-footer fs66 clearfix'>
   <view class='f-left' bindtap="wayLogin">
     <text wx:if="{{flag}}">手机验证码登录</text>
-    <text wx:else>手机密码登录</text>
+    <!-- <text wx:else>手机密码登录</text> -->
   </view>
   <!-- <view class='f-right' bindtap="goRegister">快速注册</view> -->
 </view>
