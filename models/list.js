@@ -126,6 +126,16 @@ class ListModel extends HTTP { // 类，需要new以后去使用
       method: 'POST'
     })
   }
+  // 获取价钱和次数
+  getPriceAndCount(ccid){
+    return this.request({
+      url: 'employer/viewcardpricebyccid',
+      data: {
+        ccid: ccid
+      },
+      method: 'POST'
+    })
+  }
 }
 
 export {

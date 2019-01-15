@@ -1,28 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="c2465aa7-5b51-4393-a7db-da8060279cc6" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pages/apply/apply.js" afterPath="$PROJECT_DIR$/pages/apply/apply.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pages/bannerDes/bannerDes.js" afterPath="$PROJECT_DIR$/pages/bannerDes/bannerDes.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pages/collect/collect.js" afterPath="$PROJECT_DIR$/pages/collect/collect.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pages/connect/connect.js" afterPath="$PROJECT_DIR$/pages/connect/connect.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pages/feedback/feedback.js" afterPath="$PROJECT_DIR$/pages/feedback/feedback.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pages/findpwd/findpwd.js" afterPath="$PROJECT_DIR$/pages/findpwd/findpwd.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pages/giveup/giveup.js" afterPath="$PROJECT_DIR$/pages/giveup/giveup.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pages/identify/identify.js" afterPath="$PROJECT_DIR$/pages/identify/identify.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pages/interview/interview.js" afterPath="$PROJECT_DIR$/pages/interview/interview.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pages/interviewrecord/interviewrecord.js" afterPath="$PROJECT_DIR$/pages/interviewrecord/interviewrecord.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pages/me/me.js" afterPath="$PROJECT_DIR$/pages/me/me.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pages/myfeedback/myfeedback.js" afterPath="$PROJECT_DIR$/pages/myfeedback/myfeedback.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pages/myinfo/myinfo.js" afterPath="$PROJECT_DIR$/pages/myinfo/myinfo.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pages/order/order.js" afterPath="$PROJECT_DIR$/pages/order/order.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pages/personalinfo/personalinfo.js" afterPath="$PROJECT_DIR$/pages/personalinfo/personalinfo.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pages/persondetail/persondetail.js" afterPath="$PROJECT_DIR$/pages/persondetail/persondetail.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pages/publish/publish.js" afterPath="$PROJECT_DIR$/pages/publish/publish.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pages/register/register.js" afterPath="$PROJECT_DIR$/pages/register/register.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pages/searchcard/searchcard.js" afterPath="$PROJECT_DIR$/pages/searchcard/searchcard.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pages/signed/signed.js" afterPath="$PROJECT_DIR$/pages/signed/signed.js" />
-    </list>
+    <list default="true" id="c2465aa7-5b51-4393-a7db-da8060279cc6" name="Default" comment="" />
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
     <ignored path="$PROJECT_DIR$/tmp/" />
@@ -34,18 +13,7 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="me.js" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/pages/me/me.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="204">
-              <caret line="39" column="0" lean-forward="true" selection-start-line="39" selection-start-column="0" selection-end-line="39" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300" />
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
@@ -187,18 +155,17 @@
       <option name="presentableId" value="Default" />
       <updated>1546618996467</updated>
       <workItem from="1546618999630" duration="684000" />
-      <workItem from="1547522868084" duration="1434000" />
+      <workItem from="1547522868084" duration="1539000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="2118000" />
+    <option name="totallyTimeSpent" value="2223000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1280" height="735" extended-state="0" />
-    <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2494043" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2494043" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />

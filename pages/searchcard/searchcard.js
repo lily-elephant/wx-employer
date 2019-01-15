@@ -9,14 +9,10 @@ Page({
    * 页面的初始数据
    */
   data: {
-    items: [
-      { price: '2000', count: 20, value: 'v1', checked: 'true' },
-      { price: '3000', count: 35, value: 'v2' },
-    ],
-
+    items: [],
     answerList: [],
-    price: '2000',
-    count: 20,
+    price: null,
+    count: null,
     ccid: null
   },
   /**
@@ -26,10 +22,10 @@ Page({
   radioChange(e) {
     let val = e.detail.value;
     this.data.items.forEach((item) => {
-      if(item.value == val){
+      if (item.primaryid == val){
         this.setData({
-          price: item.price,
-          count: item.count
+          price: item.cardprice,
+          count: item.cardcount
         })
       }
     })
@@ -42,11 +38,28 @@ Page({
       title: '提示',
       content: `支付金额：￥${this.data.price}`,
       confirmText: '去支付',
-      showCancel: false,
       success(res) {
         if (res.confirm) {
           that.pay()
         } 
+      }
+    })
+  },
+  // 获取价钱和次数
+  getPrice(ccid){
+    listModel.getPriceAndCount(ccid).then(res => {
+      if (res.data.code == errorok){
+        console.log(res)
+        res.data.data.forEach((item,index) => {
+          if(index==0){
+            item.checked = true
+          }
+        })
+        this.setData({
+          items: res.data.data,
+          price: res.data.data[0].cardprice,
+          count: res.data.data[0].cardcount
+        })
       }
     })
   },
@@ -178,6 +191,7 @@ Page({
    */
   onLoad: function (options) {
     this.getNeedByClassic(options.ccid)
+    this.getPrice(options.ccid)
     this.setData({
       ccid: options.ccid
     })
