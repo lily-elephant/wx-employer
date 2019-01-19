@@ -27,12 +27,24 @@ Page({
    * */ 
   // 获取首页需求列表
   _getHasNeeds(username){
+    let needActive = wx.getStorageSync('ccid') ? wx.getStorageSync('ccid'): null
+    
     listModel.getHasNeeds(username).then(res => {
       if(res.data.code == errorok){
         if(!res.data.data) {res.data.data = []}
+        res.data.data.forEach((item) => {
+          if (item.ccid == needActive){
+            this.setData({
+              captionNeed: item.name 
+            })
+          }else{
+            this.setData({
+              captionNeed:  res.data.data[0].name
+            })
+          }
+        })
         this.setData({
-          optArr: res.data.data,
-          captionNeed: res.data.data[0].name || ''
+          optArr: res.data.data,       
         })
       }
     })

@@ -34,7 +34,7 @@
         <text class='f-left fs66'>最高学历</text>{{person.education == null ? "未填写" : person.education}}</view>
 
       <view class='row'>
-        <text class='f-left fs66'>婚育状况</text>{{person.marry == null ? "未填写" : person.marry}}</view>
+        <text class='f-left fs66'>婚育状况</text>{{person.marry == null || !person.marry? "未填写" : person.marry}}</view>
       <view class='row'>
         <text class='f-left fs66'>有无驾照</text>{{person.isdrive == null ? "未填写" : person.isdrive}}</view>
       <view class='row'>

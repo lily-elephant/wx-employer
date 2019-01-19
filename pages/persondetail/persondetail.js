@@ -79,6 +79,7 @@ Page({
    * 点击收藏按钮
    */
   collect() {
+    let msg = this.data.collectFlag == 1 ? '取消收藏' : '已收藏'
     this.data.collectFlag = this.data.collectFlag == 1 ? 0 : 1
     this.setData({
       collectFlag: this.data.collectFlag
@@ -88,7 +89,8 @@ Page({
       .then(res => {
         if (res.data.code == errorok) {
           wx.showToast({
-            title: '操作成功',
+            title: msg,
+            icon: 'none'
           })
         } else {
           wx.showToast({
@@ -182,7 +184,7 @@ Page({
   // 点击购买查询卡
   buyCard() {
     wx.navigateTo({
-      url: '../searchcard/searchcard',
+      url: '../searchcard/searchcard?ccid=' + wx.getStorageSync('ccid'),
     })
   },
   // 阻止冒泡

@@ -5,8 +5,8 @@
       <view class="classic-item {{item.flag? 'active': ''}}" data-id="{{item.ccid}}" data-idx="{{index}}" bindtap="onTap1" wx:for="{{classicArr}}" wx:key="index">{{item.name}}</view>
     </view>
   </view>
-  <!--  hidden="{{levelFlag}}" -->
-  <view class="certy-level">
+  <!--   -->
+  <view class="certy-level" hidden="{{levelFlag}}">
     <view class="filter-title">认证类别</view>
     <view class="level-wrapper">
       <view class="level-item {{item.flag? 'active': ''}}" data-id="{{item.value}}" data-idx="{{index}}" bindtap="onTap2" wx:for="{{levelArr}}" wx:key="index">{{item.label}}</view>

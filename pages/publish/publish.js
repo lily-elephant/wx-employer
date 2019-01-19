@@ -4,6 +4,8 @@ Page({
   data: {
     answerList: [],
     showFlag: false,
+    x: null, // 单选答案
+    y: [], //多谢答案
   },
   //点击确定 
   sure(e){
@@ -25,6 +27,9 @@ Page({
    * 选择答案
    */
   radioChange:function(e){
+    this.setData({
+      x: e.detail.value
+    })
     for (var i = 0; i < this.data.answerList.length; i++) {
       if (this.data.answerList[i].eid == e.currentTarget.dataset.eid) {
         this.data.answerList.splice(i, 1)
@@ -38,6 +43,9 @@ Page({
   },
   // 点击多选
   checkboxChange: function (e) {
+    this.setData({
+      y: e.detail.value
+    })
     for (let i = 0; i < this.data.answerList.length; i++) {
       if (this.data.answerList[i].eid == e.currentTarget.dataset.eid) {
         this.data.answerList.splice(i, 1)
@@ -54,10 +62,18 @@ Page({
    */
   submit: function(){
     wx.setStorageSync('userNeed', this.data.answerList)
+    if (this.data.x || this.data.y.length) {
     // 提交成功跳转
-    wx.navigateTo({
-      url: '../match/match',
-    })
+      wx.navigateTo({
+        url: '../match/match',
+      })
+    } else {
+      wx.showToast({
+        title: '请选择需求',
+        icon: 'none'
+      })
+    }
+    
   },
   // 获取题目
   getQuesList(){

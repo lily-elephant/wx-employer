@@ -56,6 +56,12 @@ Page({
       url: '../signed/signed?headimageurl=' + headimageurl + '&name=' + name + '&workdate=' + workdate + '&idcard=' + idcard + '&education=' + education + '&address1=' + address1 + '&brief=' + brief + '&hkid=' + hkid + '&sdate=' + sDate + '&edate=' + eDate + '&job=' + job + '&salary=' + salary + '&downloadurl=' + downloadurl,
     })
   },
+  onDetail(e) {
+    let housekeep = e.detail.val;
+    wx.navigateTo({
+      url: '../persondetail/persondetail?username=' + housekeep.username + '&hkid=' + housekeep.hkid,
+    })
+  },
   // 获取已签约列表
   _getSignList(){
     let username = wx.getStorageSync('username')

@@ -28,7 +28,7 @@
     <view class='row clearfix align-r fs99'><text class='f-left fs66'>当前雇佣家政人数及分工</text>
     <view class='{{describes == null ? "f-right" : "hasdata"}}'> {{describes == null ? "未填写":describes}}</view></view>
 
-    <view class='row align-r fs99 clearfix' bindtap='goNeed'><text class='f-left fs66'>家政需求</text><text class='iconfont icon-arrow-right'></text></view>
+    <!-- <view class='row align-r fs99 clearfix' bindtap='goNeed'><text class='f-left fs66'>家政需求</text><text class='iconfont icon-arrow-right'></text></view> -->
   </view>
 </view>
 <view class='align-c btn-wrapper'>

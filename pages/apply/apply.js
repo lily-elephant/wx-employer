@@ -41,10 +41,23 @@ Page({
   },
   // 申请签约
   apply(){
-    if(this.data.val.length>0){
+    let that = this;
+    wx.showModal({
+      title: '提示',
+      content: '确认签约？',
+      success(res) {
+        if (res.confirm) {
+          that.signFn();
+        }
+      }
+    })
+    
+  },
+  signFn(){
+    if (this.data.val.length > 0) {
       let username = wx.getStorageSync('username')
       listModel.apply(username, this.data.signer.hkid).then(res => {
-        if(res.data.code == errorok){
+        if (res.data.code == errorok) {
           wx.showModal({
             title: '提示',
             content: '客服人员将为您准备合同，请保持电话通畅',
@@ -58,7 +71,7 @@ Page({
               }
             }
           })
-        }else{
+        } else {
           wx.showToast({
             title: '操作失败，请重试',
             icon: 'none'

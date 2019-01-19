@@ -72,21 +72,33 @@ Page({
   },
   // 进入我的需求
   goMyneed(){
-    wx.navigateTo({
-      url: '../myneed/myneed',
-    })
+    if (wx.getStorageSync("token")) {
+      wx.navigateTo({
+        url: '../myneed/myneed',
+      })
+    } else {
+      this.login()
+    }
   },
   // 进入我联系的
   goMyconnect(){
-    wx.navigateTo({
-      url: '../connect/connect',
-    })
+    if (wx.getStorageSync("token")) {
+      wx.navigateTo({
+        url: '../connect/connect',
+      })
+    } else {
+      this.login()
+    }
   },
   // 进入我的收藏
   goMycollect(){
-    wx.navigateTo({
-      url: '../collect/collect',
-    })
+    if (wx.getStorageSync("token")) {
+      wx.navigateTo({
+        url: '../collect/collect',
+      })
+    } else {
+      this.login()
+    }
   },
   // 进入我的消息
   goMyinfo: function(){
@@ -134,7 +146,9 @@ Page({
       success: function (res) {
         if (res.confirm) {
           // 清除登录状态
-          wx.clearStorageSync('token');
+          wx.removeStorageSync('token');
+          wx.removeStorageSync('username');
+          wx.removeStorageSync('ccid');
           that.login()
         } 
       }

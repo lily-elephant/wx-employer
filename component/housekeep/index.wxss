@@ -12,6 +12,7 @@
 }
 .item-main{
   padding: 0 0 0 28rpx;
+  width: calc(100% - 230rpx - 2px)
 }
 .item-info{
   display: table;
@@ -38,7 +39,6 @@
   -webkit-line-clamp: 2;
   line-height: 32rpx;
   height: 64rpx;
-  width: 81%;
   font-size: 24rpx;
   text-align: justify;
   overflow: hidden; 

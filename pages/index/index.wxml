@@ -39,5 +39,5 @@
 </view>
 <!-- 筛选条件 -->
 <view class="filter-wrapper" hidden="{{filterFlag}}" bindtap="hideFilter">
-  <v-filter bind:sure="sure" level-flag="{{true}}" />
+  <v-filter bind:sure="sure" />
 </view>

@@ -102,6 +102,8 @@ page{
   padding-top: 30rpx;
   text-align: right;
   color: #999;
+  min-height: 72rpx;
+  box-sizing: border-box;
 }
 .review-tit{
   position: relative;

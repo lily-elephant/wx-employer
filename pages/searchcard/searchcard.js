@@ -49,7 +49,6 @@ Page({
   getPrice(ccid){
     listModel.getPriceAndCount(ccid).then(res => {
       if (res.data.code == errorok){
-        console.log(res)
         res.data.data.forEach((item,index) => {
           if(index==0){
             item.checked = true
@@ -119,10 +118,10 @@ Page({
                       this.onLoad()
                     },
                     'fail': function (res) {
-                      //console.log(res, 222222222);
+                      // console.log(res, 222222222);
                       wx.showToast({
                         title: '取消支付',
-                        icon: null
+                        icon: 'none'
                       })
                     }
 
